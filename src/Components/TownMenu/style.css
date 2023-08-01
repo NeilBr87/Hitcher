@@ -1,0 +1,14 @@
+/* Add the CSS for the progress bar */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+  }
+  
+  /* Apply the color to the progress bar */
+  .progress-bar::-webkit-progress-value {
+    background-color: red; /* For WebKit-based browsers */
+  }
+  
+  .progress-bar::-moz-progress-bar {
+    background-color: red; /* For Firefox */
+  }
