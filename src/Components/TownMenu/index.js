@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import './style.css';
-import Notes from './Notes.JPG';
+import EveningMenu from '../EveningMenu';
+import ExploreMenu from '../ExploreMenu';
 
 const townPotentials = {
-  London: ['Crawley', 'Maidstone', 'Winchester', 'Paris'],
+  London: ['Crawley', 'Maidstone', 'Winchester'],
   Dover: ['Calais'],
   Calais: ['Lille', 'Amiens', 'Roen', 'Brussels'],
   Lille: ['Paris', 'Amiens', 'Brussels'],
@@ -62,7 +63,11 @@ export default function TownMenu(props) {
   const [amount, setAmount] = useState(0);
   const [deciding, setDeciding] = useState(false);
   const [newTown, setNewTown] = useState('');
-
+  const [evening, setEvening] = useState(false);
+  const [sleepStatus, setSleepStatus] = useState("Sleeping rough");
+  const [eatingStatus, setEatingStatus] = useState("Going hungry");
+  const [eveningBlurb, setEveningBlurb] = useState(true);
+  const [exploring, setExploring] = useState(false);
 
   const getRandomAmount = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -88,8 +93,19 @@ export default function TownMenu(props) {
     }
   }, [newTown]);
 
+  useEffect(() => {
+    if (props.time >= 17) {
+      setEvening(true);
+    }
+  }, [props.time]);
+
+  function handleExploreClick() {
+    setExploring(true);
+  }
+
 
   function hitchhike() {
+    props.setTime(props.time + 2);
     setDeciding(true);
     const randomIndex = Math.floor(Math.random() * townPotentials[props.currentTown].length);
     setNewTown(townPotentials[props.currentTown][randomIndex]);
@@ -110,29 +126,71 @@ export default function TownMenu(props) {
 
   return (
 
-    <div style={{display: 'flex', flexDirection: 'row', width: '600px', height: '400px',justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', borderRadius: '20px'}}>
+    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '700px', height: '500px',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: 'white', color: 'black', borderRadius: '20px'}}>
       
       
       
       
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px'}}>
-        <h2>Menu</h2>
-        <p>You are in {props.currentTown}.</p>        
-        {!deciding && (
-          <div>
-            <button onClick={hitchhike}>Hitchhike</button>
-          </div>
-        )}
+        <h2>Day {props.day}</h2>
+        {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
+        <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>   
+        {!evening && (
+        <div>     
+        {!deciding && !exploring && (
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px'}}>
+            <button className="keyButtons" onClick={hitchhike}>Hitchhike</button>
+            <button className="keyButtons" onClick={handleExploreClick}>Explore</button>
+            </div>
+
+            )}
+            {exploring && (
+              <div>
+                <ExploreMenu setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} />
+              </div>)}
+        
         {deciding && (
           <div>
-            <p>{message}</p>
+            <p>You spend a couple of hours with your thumb in the air.</p>
+            <p style={{width: '600px'}}>{message}</p>
             <p>Do you agree?</p>
-            <button onClick={accept}>Yes</button>
-            <button onClick={decline}>No</button>
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
+            <button style={{
+                border: '5px inset rgb(60, 160, 60)',
+                backgroundColor: 'rgb(100, 200, 100)',
+                fontFamily: 'courier, monospace',
+                width: '70px',
+                height: '40px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                borderRadius: '5px'
+            }}
+            onClick={accept}>Yes</button>
+            <button style={{
+                border: '5px inset rgb(160, 60, 60)',
+                backgroundColor: 'rgb(200, 100, 100)',
+                fontFamily: 'courier, monospace',
+                width: '70px',
+                height: '40px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                borderRadius: '5px'
+            }}onClick={decline}>No</button>
+            </div>
           </div>
         )}
+      </div>)}
+      {evening && (
+        <div>
+          {eveningBlurb && (
+            <div>
+              <p>You stick your thumb out for a while but no one is in a generous mood.</p>
+              <p>It's early evening now - too late to hitch a ride.</p>
+            </div>)}
+          <EveningMenu setEveningBlurb={setEveningBlurb} setDeciding={setDeciding} day={props.day} setDay={props.setDay} time={props.time} setTime={props.setTime} sleepStatus={sleepStatus} setSleepStatus={setSleepStatus} eatingStatus={eatingStatus} setEatingStatus={setEatingStatus} setEvening={setEvening} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney}/>
       </div>
-
+      )}
+      </div>
     </div>
   );
 }

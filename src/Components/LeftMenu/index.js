@@ -3,6 +3,7 @@ import TownMenu from '../TownMenu';
 import Rewards from '../Rewards';
 import Map from '../Map';
 import './style.css';
+import Stats from '../Stats';
 
 export default function LeftMenu() {
     const [currentTown, setCurrentTown] = useState('London');
@@ -10,6 +11,8 @@ export default function LeftMenu() {
     const [health, setHealth] = useState(100);
     const [food, setFood] = useState(100);
     const [money, setMoney] = useState(1000);
+    const [day, setDay] = useState(1)
+    const [time, setTime] = useState(9)
 
     function handleMenuClick() {
         setSelection('menu');
@@ -24,25 +27,25 @@ export default function LeftMenu() {
     }
 
     return (
-        <div id="greaterContainer" style={{width: '58%', height: '520px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '5px'}}>
-            
-            <div style={{display: 'flex', flexDirection: 'row', gap: '4%'}}>
-            
-                <div style={{display: 'flex', flexDirection: 'column', width: '160px', backgroundColor: 'white', paddingLeft: '20px', borderRadius: '20px'}}>
-                    <h3 style={{textAlign: 'left'}}>Menu</h3>
-                    <h4 onClick={handleMenuClick} style={{textAlign: 'left'}}>Town Menu</h4>
-                    <h4 onClick={handleMapClick} style={{textAlign: 'left'}}>Map</h4>
-                    <h4 onClick={handleRewardClick} style={{textAlign: 'left'}}>Reward cities</h4>
-                </div>
-                
-                <div>
-                    {selection === 'menu' && <TownMenu currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney}/>}
-                    {selection === 'map' && <Map currentTown={currentTown} />}
-                    {selection === 'reward' && <Rewards />}
-                </div>
-
-            </div>
-
+        <div id="greaterContainer" style={{ width: '1076px', height: '500px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', backgroundColor: '#435F7D', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '4%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', width: '160px', backgroundColor: '#34495e', paddingLeft: '20px', borderRadius: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)' }}>
+          <h3 style={{ textAlign: 'left', fontSize: '24px', fontWeight: 'bold', color: '#f39c12', marginTop: '10px' }}>Explore</h3>
+          <h4 onClick={handleMenuClick} style={{ textAlign: 'left', fontSize: '18px', fontWeight: 'bold', color: '#d4e1f1', cursor: 'pointer', marginBottom: '8px', paddingBottom: '6px' }}>Town Menu</h4>
+          <h4 onClick={handleMapClick} style={{ textAlign: 'left', fontSize: '18px', fontWeight: 'bold', color: '#d4e1f1', cursor: 'pointer', marginBottom: '8px', paddingBottom: '6px' }}>Map</h4>
+          <h4 onClick={handleRewardClick} style={{ textAlign: 'left', fontSize: '18px', fontWeight: 'bold', color: '#d4e1f1', cursor: 'pointer', marginBottom: '8px', paddingBottom: '6px' }}>Reward Cities</h4>
         </div>
+
+        <div>
+            <Stats health={health} food={food} money={money} />
+        </div>
+
+        <div>
+          {selection === 'menu' && <TownMenu day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />}
+          {selection === 'map' && <Map currentTown={currentTown} />}
+          {selection === 'reward' && <Rewards />}
+        </div>
+      </div>
+    </div>
     );
     }

@@ -1,0 +1,48 @@
+.keyButtonsEvening {
+    border: 5px inset #34495e;
+    width: 200px;
+    height: 50px;
+    background-color: #435F7D;
+    font-family:'Courier New', Courier, monospace;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .greenSleepButton {
+    width: 140px;
+    height: 40px;
+    background-color: rgb(100, 200, 100);
+    font-family:'Courier New', Courier, monospace;
+    border: 5px inset rgb(60, 160, 60);
+    font-size: 13px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .sleepRoughButton {
+    width: 140px;
+    height: 40px;
+    background-color: rgb(200, 100, 100);
+    font-family:'Courier New', Courier, monospace;
+    border: 5px inset rgb(160, 60, 60);
+    font-size: 13px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  #fadeOut {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+@keyframes fadeIn {
+    0% {
+      filter : blur(10px);
+      opacity: 0;
+    }
+    100% {
+      filter : blur(0px);
+      opacity: 1;
+    }
+    }

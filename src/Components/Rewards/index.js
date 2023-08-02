@@ -5,7 +5,7 @@ export default function Rewards() {
 
     return (
         <div>
-            <img src={RewardsList} alt="Rewards List" style={{width: '600px', height: '400px', borderRadius: '10px'}}/>
+            <img src={RewardsList} alt="Rewards List" style={{width: '700px', height: '500px', borderRadius: '10px'}}/>
         </div>
     );
 

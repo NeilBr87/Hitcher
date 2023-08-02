@@ -12,3 +12,33 @@
   .progress-bar::-moz-progress-bar {
     background-color: red; /* For Firefox */
   }
+
+  .keyButtons {
+    border: 5px inset #34495e;
+    width: 150px;
+    height: 40px;
+    background-color: #435F7D;
+    font-family:'Courier New', Courier, monospace;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+
+#containerFade {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+  @keyframes fadeIn {
+    0% {
+      filter : blur(10px);
+      opacity: 0;
+    }
+    100% {
+      filter : blur(0px);
+      opacity: 1;
+    }
+  }
