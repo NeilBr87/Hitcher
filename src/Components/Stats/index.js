@@ -30,7 +30,7 @@ export default function Stats(props) {
         ></div>
       </div>
       <p style={{ marginBottom: '3px', fontWeight: 'bold' }}>Money</p>
-      <span style={{ fontWeight: 'bold', backgroundColor: 'rgb(70, 190, 70)', padding: '8px', fontSize: '14px', borderRadius: '10px' }}>
+      <span style={{ fontWeight: 'bold', color: 'black', backgroundColor: 'rgb(70, 190, 70)', padding: '6px', fontSize: '14px', borderRadius: '5px', border: '3px groove rgb(30, 100, 30)' }}>
         £{props.money}
       </span>
     </div>

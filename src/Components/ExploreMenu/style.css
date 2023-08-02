@@ -1,0 +1,19 @@
+.exploreKeyButtons {
+    width: 130px;
+    height: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.earnButtons {
+    width: 160px;
+    height: 50px;
+    background-color: rgb(120, 180, 90);
+    border: 5px inset rgb(60, 160, 60);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+}

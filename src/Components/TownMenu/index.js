@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './style.css';
 import EveningMenu from '../EveningMenu';
 import ExploreMenu from '../ExploreMenu';
+import TravelMenu from '../TravelMenu';
 
 const townPotentials = {
   London: ['Crawley', 'Maidstone', 'Winchester'],
@@ -14,6 +15,7 @@ const townPotentials = {
   Crawley: ['Newhaven', 'Folkestone'],
   Maidstone: ['Dover', 'Folkestone'],
   Winchester: ['Portsmouth', 'Newhaven', 'Dieppe'],
+  Dieppe: ['Paris', 'Orleans', 'Reims'],
   Portsmouth: ['Caen'],
   Newhaven: ['Dieppe'],
   Paris: ['Orleans', 'Reims', 'Bordeaux', 'Barcelona'],
@@ -68,6 +70,7 @@ export default function TownMenu(props) {
   const [eatingStatus, setEatingStatus] = useState("Going hungry");
   const [eveningBlurb, setEveningBlurb] = useState(true);
   const [exploring, setExploring] = useState(false);
+  const [travelling, setTravelling] = useState(false);
 
   const getRandomAmount = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -94,7 +97,7 @@ export default function TownMenu(props) {
   }, [newTown]);
 
   useEffect(() => {
-    if (props.time >= 17) {
+    if (props.time >= 17.05) {
       setEvening(true);
     }
   }, [props.time]);
@@ -118,6 +121,7 @@ export default function TownMenu(props) {
     }
     setAmount(0);
     setDeciding(!deciding);
+    setTravelling(true);
   }
 
   function decline() {
@@ -141,12 +145,13 @@ export default function TownMenu(props) {
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px'}}>
             <button className="keyButtons" onClick={hitchhike}>Hitchhike</button>
             <button className="keyButtons" onClick={handleExploreClick}>Explore</button>
+            <button className="keyButtons">Wait</button>
             </div>
 
             )}
             {exploring && (
               <div>
-                <ExploreMenu setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} />
+                <ExploreMenu setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
               </div>)}
         
         {deciding && (
@@ -179,6 +184,13 @@ export default function TownMenu(props) {
             </div>
           </div>
         )}
+
+        {travelling && (
+          <div>
+            <TravelMenu />
+          </div>
+        )}
+
       </div>)}
       {evening && (
         <div>
