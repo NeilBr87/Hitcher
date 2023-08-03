@@ -26,5 +26,6 @@ Round up to the nearest hour.
 * Caen: one orig (Portsmouth): 6 hours (FERRY)
 * Dieppe: one orig (Newhaven): 4 hours (FERRY)
 * Calais: 2 orig (Dover, Folkstone): 2 hours (FERRY)
+* Paris:   
 
 

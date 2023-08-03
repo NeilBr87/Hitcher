@@ -1,22 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 
 export default function TravelMenu(props) {
-
+const [journeyOutcome, setJourneyOutcome] = useState('');
+const [journeyPara2, setJourneyPara2] = useState('');
+const [journeyPara3, setJourneyPara3] = useState('');
+const [journeyPara4, setJourneyPara4] = useState('');
 const [drivingDistance, setDrivingDistance] = useState(0);
+const [outcomeCoda, setOutcomeCoda] = useState('');
 
+useEffect(() => {
     switch(props.currentTown) {
-        case 'Crawley':
-            setDrivingDistance(2);
+        case 'Caen':
+            setDrivingDistance(6);
             break;
+        default: setDrivingDistance(2);
 
     }
+    const randomEvent = Math.random();
+
+    if (randomEvent < 0.05) {
+      setOutcomeCoda("breakdown")
+      setJourneyOutcome("The driver makes their way down the motorway, chatting to you about life.");
+      setJourneyPara2("That is, until around ten miles from your destination, when their car breaks down.");
+      setJourneyPara3("You wait with them until breakdown recovery arrives, but there's no way to get someone else to stop for you on a motorway.");
+      setJourneyPara4("You have a long, difficult walk into town. You arrive exhausted and hungry, and your feet are sore.");
+    } else if (randomEvent < 0.0167) {
+      setOutcomeCoda("robbery")
+      setJourneyOutcome("The driver seems tense as you get about half way there. You notice they've got off the motorway and are driving down a country lane.");
+      setJourneyPara2(`After a while, they pull over. "I'm sorry to do this," they say. "You seem to have a lot of cash on you and I'm barely scraping by. So here's what we're going to do. I want £200. If you don't give it to me, I'll leave you here in the middle of nowhere."`);   
+      setJourneyPara3("You have a choice to make. You can hand over your money, or you can walk, facing a moderate possible health or food penalty.");
+      setJourneyPara4("What do you do?");
+    } else if (randomEvent < 0.001) {
+      setJourneyOutcome("You get abducted by aliens.");
+    } else {
+      setJourneyOutcome("You arrive safely at your destination.");
+    }
+  
+}, [props.currentTown]);
 
     return (
         <div>
-        <p>You get in the car. It is four hours to {props.currentTown}.</p>
-        <p>Tutorial note for your first journey: </p>
+        <p>You get in the car. It is {drivingDistance} hours to {props.currentTown}.</p>
+        <p>{journeyOutcome}</p>
         </div>
     )
 

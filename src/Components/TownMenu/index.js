@@ -12,11 +12,12 @@ const townPotentials = {
   Amiens: ['Paris', 'Orleans', 'Reims'],
   Roen: ['Paris', 'Orleans', 'Reims'],
   Folkestone: ['Calais',],
-  Crawley: ['Newhaven', 'Folkestone', 'Dover'],
+  Crawley: ['Newhaven', 'Folkestone', 'Dover', 'Portsmouth'],
   Maidstone: ['Dover', 'Folkestone', 'Newhaven'],
   Winchester: ['Portsmouth', 'Newhaven'],
   Dieppe: ['Paris', 'Orleans', 'Reims'],
   Portsmouth: ['Caen'],
+  Caen: ['Paris', 'Tours', 'Orleans'],
   Newhaven: ['Dieppe'],
   Paris: ['Orleans', 'Reims', 'Bordeaux', 'Barcelona'],
   Orleans: ['Toulouse', 'Bordeaux'],
@@ -147,7 +148,7 @@ export default function TownMenu(props) {
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px'}}>
         <h2>Day {props.day}</h2>
         {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
-        <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>   
+        {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>}   
         {!evening && (
         <div>     
         {!deciding && !exploring && (
