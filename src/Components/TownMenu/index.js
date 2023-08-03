@@ -12,9 +12,9 @@ const townPotentials = {
   Amiens: ['Paris', 'Orleans', 'Reims'],
   Roen: ['Paris', 'Orleans', 'Reims'],
   Folkestone: ['Calais',],
-  Crawley: ['Newhaven', 'Folkestone'],
-  Maidstone: ['Dover', 'Folkestone'],
-  Winchester: ['Portsmouth', 'Newhaven', 'Dieppe'],
+  Crawley: ['Newhaven', 'Folkestone', 'Dover'],
+  Maidstone: ['Dover', 'Folkestone', 'Newhaven'],
+  Winchester: ['Portsmouth', 'Newhaven'],
   Dieppe: ['Paris', 'Orleans', 'Reims'],
   Portsmouth: ['Caen'],
   Newhaven: ['Dieppe'],
@@ -61,16 +61,25 @@ const townPotentials = {
 };
 
 export default function TownMenu(props) {
+  // Render control panel
+  
+   // Once this is set to true, close out day and open evening menu
+  const [evening, setEvening] = useState(false);
+  // Opens the 'deciding' menu which is where you can say yes or no to a lift
+  const [deciding, setDeciding] = useState(false);
+  // Renders the 'evening blurb' - the text to explain the hitchhiking cutoff before evening. Note: The thumb needs to be moved somewhere in case user isn't hitchhiking when evening starts.
+  const [eveningBlurb, setEveningBlurb] = useState(true);
+  // Renders the town menu (earn, lunch, hospital, parcelSprint)
+  const [exploring, setExploring] = useState(false);
+  // Renders the travelling menu on accepting a lift
+  const [travelling, setTravelling] = useState(false);
+
+  
   const [message, setMessage] = useState('');
   const [amount, setAmount] = useState(0);
-  const [deciding, setDeciding] = useState(false);
   const [newTown, setNewTown] = useState('');
-  const [evening, setEvening] = useState(false);
   const [sleepStatus, setSleepStatus] = useState("Sleeping rough");
   const [eatingStatus, setEatingStatus] = useState("Going hungry");
-  const [eveningBlurb, setEveningBlurb] = useState(true);
-  const [exploring, setExploring] = useState(false);
-  const [travelling, setTravelling] = useState(false);
 
   const getRandomAmount = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -130,7 +139,7 @@ export default function TownMenu(props) {
 
   return (
 
-    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '700px', height: '500px',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: 'white', color: 'black', borderRadius: '20px'}}>
+    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '700px', height: '500px',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(150, 150, 150)' : 'white', color: 'black', borderRadius: '20px'}}>
       
       
       
@@ -187,7 +196,7 @@ export default function TownMenu(props) {
 
         {travelling && (
           <div>
-            <TravelMenu />
+            <TravelMenu currentTown={props.currentTown}/>
           </div>
         )}
 
@@ -196,8 +205,8 @@ export default function TownMenu(props) {
         <div>
           {eveningBlurb && (
             <div>
-              <p>You stick your thumb out for a while but no one is in a generous mood.</p>
-              <p>It's early evening now - too late to hitch a ride.</p>
+              <p>You run out of time - it's getting late.</p>
+              <p>It's early evening now - too late to hitch a ride or explore town.</p>
             </div>)}
           <EveningMenu setEveningBlurb={setEveningBlurb} setDeciding={setDeciding} day={props.day} setDay={props.setDay} time={props.time} setTime={props.setTime} sleepStatus={sleepStatus} setSleepStatus={setSleepStatus} eatingStatus={eatingStatus} setEatingStatus={setEatingStatus} setEvening={setEvening} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney}/>
       </div>
