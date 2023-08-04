@@ -1,66 +1,41 @@
-.loader {
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.car {
-	&__body {
-		animation: shake 0.2s ease-in-out infinite alternate;
-	}
-	
-	&__line {
-		transform-origin: center right;
-		stroke-dasharray: 22;
-		animation: line 0.8s ease-in-out infinite;
-		animation-fill-mode: both;
-		
-		&--top {
-			animation-delay: 0s;
-		}
-		
-		&--middle {
-			animation-delay: 0.2s;
-		}
-		
-		&--bottom {
-			animation-delay: 0.4s;
-		}
-	}
-}
-
-@keyframes shake {
-	0% {
-		transform: translateY(-1%);
-	}
-	100% {
-		transform: translateY(3%);
-	}
-}
-
-@keyframes line {
-	0% {
-		stroke-dashoffset: 22;
-	}
-	
-	25% {
-		stroke-dashoffset: 22;
-	}
-	
-	50% {
-		stroke-dashoffset: 0;
-	}
-	
-	51% {
-		stroke-dashoffset: 0;
-	}
-	
-	80% {
-		stroke-dashoffset: -22;
-	}
-	
-	100% {
-		stroke-dashoffset: -22;
-	}
-}
+.car-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-left: 100px;
+  }
+  
+  .car {
+    position: absolute;
+    width: 100px;
+    animation: move 10s forwards; /* Change 'infinite' to 'forwards' */
+    background-image: url('https://s16.postimg.io/6xyi2z5rl/image.png');
+    background-position: center center;
+    background-size: contain;
+    height: 100px;
+    background-repeat: no-repeat;
+  }
+  
+  .secondCar {
+    animation: move_2 2s infinite;
+    background-image: url('https://s16.postimg.io/qoqq8ufht/image.png');
+  }
+  
+  @keyframes move {
+    0% {
+      left: 0px;
+      top: 0px;
+    }
+    45% {
+      transform: rotate(0);
+    }
+    50% {
+      left: 200px;
+      top: 100px;
+      background-image: url('https://s16.postimg.io/6xyi2z5rl/image.png');
+    }
+    100% {
+      opacity: 0; /* Add opacity to fade out at the end */
+    }
+  }
+  

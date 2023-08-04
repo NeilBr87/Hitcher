@@ -14,6 +14,9 @@ export default function ExploreMenu(props) {
     const [earnFoodDesc, setEarnFoodDesc] = useState('');
     const [earnHealthDesc, setEarnHealthDesc] = useState('');
     const [chosenJob, setChosenJob] = useState('');
+    const [healthMessage, setHealthMessage] = useState('');
+    const [healthDiv, setHealthDiv] = useState(false);
+    const [healthCost, setHealthCost] = useState(0);
 
     function goBack() {
         props.setExploring(false);
@@ -83,6 +86,58 @@ export default function ExploreMenu(props) {
         }
     }
 
+    function lunch() {
+        setHideMenu(true);
+        setLunchExpanded(true);
+    }
+
+    function noLunch() {
+        setLunchExpanded(false);
+        setHideMenu(false);
+    }  
+
+    function supermarketLunch() {
+        setLunchExpanded(false);
+        setHideMenu(false);
+        props.setFood(props.food + 10);
+        props.setMoney(props.money - 10);
+        props.setTime(props.time + 1);
+    }
+
+    function restaurantLunch() {
+        setLunchExpanded(false);
+        setHideMenu(false);
+        props.setFood(props.food + 30);
+        props.setMoney(props.money - 20);
+        props.setTime(props.time + 1);
+    }
+
+    function hospital() {
+        setHideMenu(true);
+        setHospitalExpanded(true);
+        if (props.health === 100) {
+            setHealthMessage("You're already at full health and don't need the hospital.");
+        } else {
+            const newHealthCost = 100 - props.health;
+            setHealthCost(newHealthCost);
+            setHealthMessage(`It will cost you £${newHealthCost} to get back to full health.`);
+            setHealthDiv(true);
+        }
+    }
+    function heal() {
+        props.setHealth(100);
+        props.setMoney(props.money - healthCost);
+        setHealthDiv(false);
+        setHospitalExpanded(false);
+        setHideMenu(false);
+    }
+
+    function closeHospital() {
+        setHealthDiv(false);
+        setHospitalExpanded(false);
+        setHideMenu(false);
+    }
+
     return (
         <div>
             {!hideMenu && (
@@ -94,11 +149,13 @@ export default function ExploreMenu(props) {
                         border: '5px inset rgb(60, 120, 60)',
 
                     }}>Earn money</button>
-                    <button className="exploreKeyButtons" style={{
+                    
+                    <button onClick={lunch} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(180, 180, 90)',
                         border: '5px inset rgb(120, 120, 90)',
                     }}>Lunch</button>
-                    <button className="exploreKeyButtons" style={{
+
+                    <button onClick={hospital} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(120, 120, 240)',
                         border: '5px inset rgb(90, 90, 180)',
                     }}>Hospital</button>
@@ -154,6 +211,68 @@ export default function ExploreMenu(props) {
                     <button onClick={goBackAfterEarn}>Back</button>
                 </div>)}
 
+            {lunchExpanded && (
+                <div>
+
+                    <p>You decide to have lunch.</p>
+                    <p>Note: Lunch is optional in Hitcher. You'll only get a food penalty for missing dinner. But if you're already hungry, you can spend extra and eat lunch.</p>
+                    <p>Eating lunch takes an hour. You'll take no extra time if you don't eat.</p>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
+                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                            <button onClick={noLunch} className="sleepRoughButton" >No lunch</button>
+                            <p style={{marginTop: '5px', fontSize: '14px', width: '140px'}}>No money or food loss</p>
+                        </div>
+
+                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                            <button onClick={supermarketLunch} className="greenSleepButton">Supermarket food</button>
+                            <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£10</p>
+                            <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +10</p>
+                        </div>
+
+                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                            <button onClick={restaurantLunch} className="greenSleepButton">Restaurant</button>
+                            <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£20</p>
+                            <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +30</p>
+                        </div>
+                </div>
+
+                </div>)}
+
+                {hospitalExpanded && (
+                    
+                    <div>
+                        <p>You decide to visit the hospital.</p>
+                        <p>You have {props.health} health.</p>
+                        <p>{healthMessage}</p>
+                        {healthDiv && (
+                            <div>
+                                <p>Do you heal?</p>
+                                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
+                                <button style={{
+                                    border: '5px inset rgb(60, 160, 60)',
+                                    backgroundColor: 'rgb(100, 200, 100)',
+                                    fontFamily: 'courier, monospace',
+                                    width: '70px',
+                                    height: '40px',
+                                    fontSize: '16px',
+                                    fontWeight: 'bold',
+                                    borderRadius: '5px'
+                                }} onClick={heal}>Yes</button>
+                                <button onClick={closeHospital} style={{
+                                    border: '5px inset rgb(160, 60, 60)',
+                                    backgroundColor: 'rgb(200, 100, 100)',
+                                    fontFamily: 'courier, monospace',
+                                    width: '70px',
+                                    height: '40px',
+                                    fontSize: '16px',
+                                    fontWeight: 'bold',
+                                    borderRadius: '5px'
+                                }}>No</button>
+                            </div>
+                            </div>)}
+                            <button onClick={closeHospital} className="keyButtons">Back</button>
+
+                    </div>)}
 
         </div>
     );

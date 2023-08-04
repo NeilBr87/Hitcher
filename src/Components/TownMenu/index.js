@@ -151,7 +151,7 @@ export default function TownMenu(props) {
         {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>}   
         {!evening && (
         <div>     
-        {!deciding && !exploring && (
+        {!deciding && !exploring && !travelling && (
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px'}}>
             <button className="keyButtons" onClick={hitchhike}>Hitchhike</button>
             <button className="keyButtons" onClick={handleExploreClick}>Explore</button>
@@ -161,7 +161,7 @@ export default function TownMenu(props) {
             )}
             {exploring && (
               <div>
-                <ExploreMenu setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
+                <ExploreMenu setTravelling={setTravelling} setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
               </div>)}
         
         {deciding && (
@@ -190,14 +190,14 @@ export default function TownMenu(props) {
                 fontSize: '16px',
                 fontWeight: 'bold',
                 borderRadius: '5px'
-            }}onClick={decline}>No</button>
+            }} onClick={decline}>No</button>
             </div>
           </div>
         )}
 
         {travelling && (
           <div>
-            <TravelMenu currentTown={props.currentTown}/>
+            <TravelMenu setTime={props.setTime} time={props.time} setTravelling={setTravelling} currentTown={props.currentTown}/>
           </div>
         )}
 

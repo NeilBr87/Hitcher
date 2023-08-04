@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-
+import CarAnimation from '../CarAnimation';
 
 export default function TravelMenu(props) {
 const [journeyOutcome, setJourneyOutcome] = useState('');
@@ -9,6 +9,7 @@ const [journeyPara3, setJourneyPara3] = useState('');
 const [journeyPara4, setJourneyPara4] = useState('');
 const [drivingDistance, setDrivingDistance] = useState(0);
 const [outcomeCoda, setOutcomeCoda] = useState('');
+const [reachedTown, setReachedTown] = useState(false);
 
 useEffect(() => {
     switch(props.currentTown) {
@@ -36,15 +37,27 @@ useEffect(() => {
       setJourneyOutcome("You get abducted by aliens.");
     } else {
       setJourneyOutcome("You arrive safely at your destination.");
+      setReachedTown(true);
     }
   
 }, [props.currentTown]);
+
+  function handleProceedClick() {
+    props.setTime(props.time + drivingDistance);
+    props.setTravelling(false);
+  }
+
 
     return (
         <div>
         <p>You get in the car. It is {drivingDistance} hours to {props.currentTown}.</p>
         <p>{journeyOutcome}</p>
-        </div>
+        <p>{journeyPara2}</p>
+        <p>{journeyPara3}</p>
+        <p>{journeyPara4}</p>
+        {reachedTown && <button onClick={handleProceedClick} className="keyButtons" >Proceed</button>}
+         
+        </div>  
     )
 
 }
