@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './style.css';
+import Food from '../Food';
 
 export default function ExploreMenu(props) {
     const [earnExpanded, setEarnExpanded] = useState(false);
@@ -14,6 +15,8 @@ export default function ExploreMenu(props) {
     const [earnFoodDesc, setEarnFoodDesc] = useState('');
     const [earnHealthDesc, setEarnHealthDesc] = useState('');
     const [chosenJob, setChosenJob] = useState('');
+    const [eatSummary, setEatSummary] = useState('');
+    const [foodSummary, setFoodSummary] = useState('');
 
     function goBack() {
         props.setExploring(false);
@@ -83,6 +86,38 @@ export default function ExploreMenu(props) {
         }
     }
 
+    function lunch() {
+        setHideMenu(true);
+        setLunchExpanded(true);
+    }
+
+    useEffect (() => {
+    if (props.eatingStatus === "Eating supermarket food") {
+        props.setFood(props.food + 10);
+            setEatSummary("grabbed some food from the supermarket")
+            if (props.food === 100) {
+                setFoodSummary("Your food level is at max level.")
+            }
+            else {
+                setFoodSummary("Your food level has gone up.")
+            }
+        }
+        else if (props.eatingStatus === "Going hungry") {
+            setHideMenu(false);
+            setLunchExpanded(false);
+        }
+        else if (props.eatingStatus === "Eating restaurant food") {
+            props.setFood(props.food + 40);
+            setEatSummary("ate at a fancy restaurant")
+            if (props.food === 100) {
+                setFoodSummary("Your food level is at max level.")
+            }
+            else {
+                setFoodSummary("Your food level has gone up.")
+            }
+        }
+    }, [props.eatingStatus]);
+
     return (
         <div>
             {!hideMenu && (
@@ -94,7 +129,7 @@ export default function ExploreMenu(props) {
                         border: '5px inset rgb(60, 120, 60)',
 
                     }}>Earn money</button>
-                    <button className="exploreKeyButtons" style={{
+                    <button onClick={lunch} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(180, 180, 90)',
                         border: '5px inset rgb(120, 120, 90)',
                     }}>Lunch</button>
@@ -145,13 +180,28 @@ export default function ExploreMenu(props) {
 
                 <button style={{marginTop: '5%'}}className="keyButtons" onClick={closeEarn}>Back</button>
             </div>)}
+
+            {lunchExpanded && (
+                <div>
+                    <p>You decide to get some lunch.</p>
+                    <p>Note: You'll only get hungrier by skipping meals at night, or due to specific circumstances. But you can grab some lunch if your food levels are low.</p>
+                    <p>What do you want to eat?</p>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
+                    <Food setEatingStatus={props.setEatingStatus} setFood={props.setFood} food={props.food} />
+                    </div>
+                    </div>)}
+                    
+                    
+
+
+
             {earnSummary && (
                 <div>
                     <p>{earnDesc}</p>
                     <p>You earned £{wages} in total.</p>
                     <p>{earnFoodDesc}</p>
                     <p>{earnHealthDesc}</p>
-                    <button onClick={goBackAfterEarn}>Back</button>
+                    <button className="keyButtons" onClick={goBackAfterEarn}>Back</button>
                 </div>)}
 
 

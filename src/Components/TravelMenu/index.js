@@ -40,10 +40,21 @@ useEffect(() => {
   
 }, [props.currentTown]);
 
+function goToTown() {
+  props.setTime(props.time + drivingDistance)
+  props.setTravelling(false);
+}
+
     return (
         <div>
         <p>You get in the car. It is {drivingDistance} hours to {props.currentTown}.</p>
         <p>{journeyOutcome}</p>
+        <p>{journeyPara2}</p>
+        <p>{journeyPara3}</p>
+        <p>{journeyPara4}</p>
+        <button className="keyButtons" style={{
+          fontSize: '16px'
+        }} onClick={goToTown} >Head to town</button>
         </div>
     )
 

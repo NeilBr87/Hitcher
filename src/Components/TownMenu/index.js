@@ -161,7 +161,7 @@ export default function TownMenu(props) {
             )}
             {exploring && (
               <div>
-                <ExploreMenu setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
+                <ExploreMenu evening={evening} setEatingStatus={setEatingStatus} setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
               </div>)}
         
         {deciding && (
@@ -197,7 +197,7 @@ export default function TownMenu(props) {
 
         {travelling && (
           <div>
-            <TravelMenu currentTown={props.currentTown}/>
+            <TravelMenu setTravelling={setTravelling} currentTown={props.currentTown} time={props.time} setTime={props.setTime}/>
           </div>
         )}
 
