@@ -15,12 +15,12 @@
 
   .keyButtons {
     border: 5px inset #34495e;
-    width: 80px;
+    width: 100px;
     height: 40px;
     background-color: #435F7D;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Press Start 2P', cursive;
     color: white;
-    font-size: 12px;
+    font-size: 9px;
     border-radius: 5px;
   }
 
@@ -30,6 +30,11 @@
 
 .fadeIn {
   animation: fadeIn 1s ease-in-out;
+}
+
+.gameText {
+  font-size: 12px;
+  color: rgb(70, 70, 80);
 }
 
   @keyframes fadeIn {

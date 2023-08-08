@@ -33,6 +33,9 @@ useEffect(() => {
       setJourneyPara2(`After a while, they pull over. "I'm sorry to do this," they say. "You seem to have a lot of cash on you and I'm barely scraping by. So here's what we're going to do. I want £200. If you don't give it to me, I'll leave you here in the middle of nowhere."`);   
       setJourneyPara3("You have a choice to make. You can hand over your money, or you can walk, facing a moderate possible health or food penalty.");
       setJourneyPara4("What do you do?");
+    } else if (randomEvent < 0.033) {
+      setOutcomeCoda("accident")
+      setJourneyOutcome("You set off down the motorway, chatting to the driver.");
     } else if (randomEvent < 0.001) {
       setJourneyOutcome("You get abducted by aliens.");
     } else {

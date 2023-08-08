@@ -15,8 +15,13 @@ export default function BookMenu(props) {
     return (
         <div id="openBook">
             <div id="bookHeader">
+                <div className="invisibleBox">
                 <TownMenu day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney}/>
+                </div>
+                <div className="invisibleBox">
                 <Map  currentTown={currentTown}  />
+
+                </div>
             </div>
         </div>
 

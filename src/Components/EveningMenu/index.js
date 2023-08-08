@@ -138,10 +138,11 @@ const [isFadingOut, setIsFadingOut] = useState(false);
     return (
         <div>
         {!dayEnded && 
-        <div id={isFadingOut ? 'fadeOut' : ''}>
-            <p>Make choices about food and shelter based on your money, health and hunger.</p>
-            <p>Current sleeping status: <span style={{ fontWeight: 'bold', color: statusColorSleep }}>{props.sleepStatus}</span></p>
-            <p>Current eating status: <span style={{fontWeight: 'bold', color: statusColorEat}}>{props.eatingStatus}</span></p>
+        <div id={isFadingOut ? 'fadeOut' : ''} style={{width: '380px', margin: '0 auto'}}>
+            <p className="gameText">Make choices about food and shelter based on your money, health and hunger.</p>
+            <p className="gameText">Current sleeping status: <span style={{ fontWeight: 'bold', color: statusColorSleep }}>{props.sleepStatus}</span></p>
+            <p className="gameText">Current eating status: </p>
+            <p className="gameText" style={{fontWeight: 'bold', marginTop: '-10px', color: statusColorEat}}>{props.eatingStatus}</p>
             {!sleepExpanded && !eatExpanded && 
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
             <button className="keyButtonsEvening" onClick={handleSleepClick}>Change sleeping arrangements</button>

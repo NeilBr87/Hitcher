@@ -142,14 +142,14 @@ export default function TownMenu(props) {
 
     <div id="containerFade">
       
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px', width: '400px'}}>
-        <h2>Day {props.day}</h2>
-        {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
-        {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>}   
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px'}}>
+        <h3>Day {props.day}</h3>
+        {!evening && <h5 style={{marginTop: '-2px'}}>{props.time}:00</h5>}
+        {!travelling && <p className="gameText" style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>}   
         {!evening && (
         <div>     
         {!deciding && !exploring && !travelling && (
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px'}}>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
             <button className="keyButtons" onClick={hitchhike}>Hitchhike</button>
             <button className="keyButtons" onClick={handleExploreClick}>Explore</button>
             <button className="keyButtons">Wait</button>
@@ -162,30 +162,29 @@ export default function TownMenu(props) {
               </div>)}
         
         {deciding && (
-          <div>
-            <p>You spend a couple of hours with your thumb in the air.</p>
-            <p style={{width: '600px'}}>{message}</p>
-            <p>Do you agree?</p>
+          <div >
+            <p className="gameText">You spend a couple of hours with your thumb in the air.</p>
+            <p className="gameText" style={{width: '360px'}}>{message}</p>
+            <p className="gameText">Do you agree?</p>
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
             <button style={{
                 border: '5px inset rgb(60, 160, 60)',
                 backgroundColor: 'rgb(100, 200, 100)',
-                fontFamily: 'courier, monospace',
+                fontFamily: `'Press Start 2P', cursive`,
                 width: '70px',
                 height: '40px',
-                fontSize: '16px',
-                fontWeight: 'bold',
+                fontSize: '12px',
                 borderRadius: '5px'
             }}
             onClick={accept}>Yes</button>
             <button style={{
                 border: '5px inset rgb(160, 60, 60)',
                 backgroundColor: 'rgb(200, 100, 100)',
-                fontFamily: 'courier, monospace',
+                fontFamily: `'Press Start 2P', cursive`,
                 width: '70px',
                 height: '40px',
-                fontSize: '16px',
-                fontWeight: 'bold',
+                fontSize: '12px',
+                
                 borderRadius: '5px'
             }} onClick={decline}>No</button>
             </div>
@@ -202,9 +201,9 @@ export default function TownMenu(props) {
       {evening && (
         <div>
           {eveningBlurb && (
-            <div>
-              <p>You run out of time - it's getting late.</p>
-              <p>It's early evening now - too late to hitch a ride or explore town.</p>
+            <div style={{width: '380px', margin: '0 auto'}}>
+              <p className="gameText">You run out of time - it's getting late.</p>
+              <p className="gameText">It's early evening now - too late to hitch a ride or explore town.</p>
             </div>)}
           <EveningMenu setEveningBlurb={setEveningBlurb} setDeciding={setDeciding} day={props.day} setDay={props.setDay} time={props.time} setTime={props.setTime} sleepStatus={sleepStatus} setSleepStatus={setSleepStatus} eatingStatus={eatingStatus} setEatingStatus={setEatingStatus} setEvening={setEvening} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney}/>
       </div>
