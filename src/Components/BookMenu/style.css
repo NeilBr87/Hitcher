@@ -1,0 +1,8 @@
+#openBook {
+    background: url(../Assets/OpenBookNoBG.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+}
