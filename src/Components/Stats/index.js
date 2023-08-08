@@ -5,7 +5,7 @@ export default function Stats(props) {
   const clampedFood = Math.min(props.food, 100);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '120px' }}>
+    <div id="statsBox" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', width: '160px', height: '500px' }}>
       <h3>Stats</h3>
       <p style={{ marginBottom: '2px', fontWeight: 'bold' }}>Health</p>
       <div style={{ width: '140px', height: '16px', border: '2px inset black', borderRadius: '20px' }}>

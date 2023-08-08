@@ -55,6 +55,7 @@ useEffect(() => {
         <p>{journeyPara2}</p>
         <p>{journeyPara3}</p>
         <p>{journeyPara4}</p>
+        <CarAnimation />
         {reachedTown && <button onClick={handleProceedClick} className="keyButtons" >Proceed</button>}
          
         </div>  

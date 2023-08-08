@@ -1,6 +1,7 @@
 import UK from './UK.JPG'
 import React from 'react';
 import { useState, useEffect } from 'react';
+import './style.css';
 
 export default function Map(props) {
     const [image, setImage] = useState(UK);

@@ -27,9 +27,9 @@ export default function LeftMenu() {
     }
 
     return (
-        <div id="greaterContainer" style={{ width: '1076px', height: '500px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', backgroundColor: '#435F7D', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '4%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', width: '160px', backgroundColor: '#34495e', paddingLeft: '20px', borderRadius: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)' }}>
+        <div id="greaterContainer" style={{ width: '1076px', height: '500px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+        <div id="leftBox" style={{ display: 'flex', flexDirection: 'column', width: '160px', paddingLeft: '20px'}}>
           <h3 style={{ textAlign: 'left', fontSize: '24px', fontWeight: 'bold', color: '#f39c12', marginTop: '10px' }}>Explore</h3>
           <h4 onClick={handleMenuClick} style={{ textAlign: 'left', fontSize: '18px', fontWeight: 'bold', color: '#d4e1f1', cursor: 'pointer', marginBottom: '8px', paddingBottom: '6px' }}>Town Menu</h4>
           <h4 onClick={handleMapClick} style={{ textAlign: 'left', fontSize: '18px', fontWeight: 'bold', color: '#d4e1f1', cursor: 'pointer', marginBottom: '8px', paddingBottom: '6px' }}>Map</h4>
