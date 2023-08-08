@@ -14,8 +14,10 @@ export default function BookMenu(props) {
 
     return (
         <div id="openBook">
-            <TownMenu day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney}/>
-            <Map  currentTown={currentTown}  />
+            <div id="bookHeader">
+                <TownMenu day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney}/>
+                <Map  currentTown={currentTown}  />
+            </div>
         </div>
 
     );

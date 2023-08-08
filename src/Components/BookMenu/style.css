@@ -1,8 +1,19 @@
 #openBook {
+    
+    margin-top: 0;
+    padding-top: 10px;
     background: url(../Assets/OpenBookNoBG.png);
-    background-size: contain;
+    background-size: 1200px 700px;;
     background-repeat: no-repeat;
-    width: 1200px;
+    background-position: center; /* Center the background image */
+    height: 100vh;
+}
+
+#bookHeader {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10%;
+    margin-top: 10%;
 }
