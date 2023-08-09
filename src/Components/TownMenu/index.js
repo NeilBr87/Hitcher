@@ -5,20 +5,22 @@ import ExploreMenu from '../ExploreMenu';
 import TravelMenu from '../TravelMenu';
 
 const townPotentials = {
+  // UK
   London: ['Crawley', 'Maidstone', 'Winchester'],
+  Crawley: ['Newhaven', 'Folkestone', 'Dover', 'Portsmouth'],
+  Maidstone: ['Dover', 'Folkestone', 'Newhaven'],
+  Winchester: ['Portsmouth', 'Newhaven'],
+  Newhaven: ['Dieppe'],
   Dover: ['Calais'],
+  Folkestone: ['Calais',],
+  Portsmouth: ['Caen'],
+
   Calais: ['Lille', 'Amiens', 'Roen', 'Brussels'],
   Lille: ['Paris', 'Amiens', 'Brussels'],
   Amiens: ['Paris', 'Orleans', 'Reims'],
   Roen: ['Paris', 'Orleans', 'Reims'],
-  Folkestone: ['Calais',],
-  Crawley: ['Newhaven', 'Folkestone', 'Dover', 'Portsmouth'],
-  Maidstone: ['Dover', 'Folkestone', 'Newhaven'],
-  Winchester: ['Portsmouth', 'Newhaven'],
   Dieppe: ['Paris', 'Orleans', 'Reims'],
-  Portsmouth: ['Caen'],
   Caen: ['Paris', 'Tours', 'Orleans'],
-  Newhaven: ['Dieppe'],
   Paris: ['Orleans', 'Reims', 'Bordeaux', 'Barcelona'],
   Orleans: ['Toulouse', 'Bordeaux'],
   Reims: ['Dijon', 'Strasbourg'],
