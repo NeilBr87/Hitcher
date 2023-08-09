@@ -4,6 +4,8 @@ import Rewards from '../Rewards';
 import Map from '../Map';
 import './style.css';
 import Stats from '../Stats';
+import TownPicture from '../TownPicture';
+
 
 export default function LeftMenu() {
     const [currentTown, setCurrentTown] = useState('London');
@@ -13,6 +15,7 @@ export default function LeftMenu() {
     const [money, setMoney] = useState(1000);
     const [day, setDay] = useState(1)
     const [time, setTime] = useState(9)
+    const [actualTown, setActualTown] = useState('')
 
     function handleMenuClick() {
         setSelection('menu');
@@ -27,7 +30,7 @@ export default function LeftMenu() {
     }
 
     return (
-        <div id="greaterContainer" style={{ width: '1076px', height: '500px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
+        <div id="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width: '1076px', height: '800px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
         <div id="leftBox" style={{ display: 'flex', flexDirection: 'column', width: '160px', paddingLeft: '20px'}}>
           <h3 style={{ textAlign: 'left', fontSize: '24px', fontWeight: 'bold', color: '#f39c12', marginTop: '10px' }}>Explore</h3>
@@ -41,10 +44,13 @@ export default function LeftMenu() {
         </div>
 
         <div>
-          {selection === 'menu' && <TownMenu day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />}
-          {selection === 'map' && <Map currentTown={currentTown} />}
+          {selection === 'menu' && <TownMenu setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />}
           {selection === 'reward' && <Rewards />}
         </div>
+      </div>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+        <TownPicture actualTown={actualTown} currentTown={currentTown} className="townPicture" />
+        <Map currentTown={currentTown} />
       </div>
     </div>
     );

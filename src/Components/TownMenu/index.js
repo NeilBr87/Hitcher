@@ -140,12 +140,14 @@ export default function TownMenu(props) {
 
   return (
 
+    <div>
+
     <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '700px', height: '500px',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(150, 150, 150)' : 'white', color: 'black'}}>
       
-      
-      
+
       
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+
         <h2>Day {props.day}</h2>
         {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
         {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>}   
@@ -197,7 +199,7 @@ export default function TownMenu(props) {
 
         {travelling && (
           <div>
-            <TravelMenu setTime={props.setTime} time={props.time} setTravelling={setTravelling} currentTown={props.currentTown}/>
+            <TravelMenu setActualTown={props.setActualTown} setTime={props.setTime} time={props.time} setTravelling={setTravelling} currentTown={props.currentTown} health={props.health} food={props.food} setHealth={props.setHealth} setFood={props.setFood} />
           </div>
         )}
 
@@ -213,6 +215,9 @@ export default function TownMenu(props) {
       </div>
       )}
       </div>
+      
+    </div>
+    
     </div>
   );
 }

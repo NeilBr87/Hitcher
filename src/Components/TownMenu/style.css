@@ -32,6 +32,10 @@
   border-bottom-right-radius: 10px;
 }
 
+.townPicture {
+text-align: left;
+}
+
 .fadeIn {
   animation: fadeIn 1s ease-in-out;
 }

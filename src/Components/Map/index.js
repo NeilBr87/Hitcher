@@ -16,7 +16,7 @@ export default function Map(props) {
 
     return (
         <div>
-            <img src={image} alt="UK" style={{width: '700px', height: '500px', borderRadius: '10px'}}/>
+            <img src={image} alt="UK" style={{width: '400px ', borderRadius: '10px'}}/>
         </div>
     );
     }
