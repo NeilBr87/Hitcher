@@ -23,43 +23,43 @@ export default function Intro(props) {
 
         const timer2 = setTimeout(() => {
             setShowPara2(true);
-        }, delay * 8);
+        }, delay * 6);
 
         const timer3 = setTimeout(() => {
             setShowPara3(true);
-        }, delay * 16);
+        }, delay * 12);
 
         const timer4 = setTimeout(() => {
             setShowPara4(true);
-        }, delay * 24);
+        }, delay * 18);
 
         const timer5 = setTimeout(() => {
             setShowPara5(true);
-        }, delay * 32);
+        }, delay * 24);
 
         const timer6 = setTimeout(() => {
             setShowPara6(true);
-        }, delay * 40);
+        }, delay * 30);
 
         const timer7 = setTimeout(() => {
             setShowPara7(true);
-        }, delay * 48);
+        }, delay * 36);
 
         const timer8 = setTimeout(() => {
             setShowPara8(true);
-        }, delay * 56);
+        }, delay * 42);
 
         const timer9 = setTimeout(() => {
             setShowPara9(true);
-        }, delay * 64);
+        }, delay * 48);
 
         const timer10 = setTimeout(() => {
             setShowPara10(true);
-        }, delay * 72);
+        }, delay * 54);
 
         const timer11 = setTimeout(() => {
             setShowPara11(true);
-        }, delay * 80);
+        }, delay * 60);
 
         return () => {
             clearTimeout(timer1);
@@ -85,6 +85,7 @@ export default function Intro(props) {
         <div className="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '976px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '5px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
             <div style={{ backgroundColor: 'black', color: 'white', height: '780px' }}>
                 <h2>Introduction</h2>
+                <p onClick={introProceed} style={{marginTop: '-10px', marginBottom: '0px'}}>(Skip)</p>
                 {showPara1 && (
                     <p id="introPara1" className="introText">"Sometimes, if you stand on the bottom rail of a bridge and lean over to watch the river slipping slowly away beneath you, you will suddenly know everything there is to be known."</p>
                 )}

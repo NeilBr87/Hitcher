@@ -5,31 +5,72 @@ import ExploreMenu from '../ExploreMenu';
 import TravelMenu from '../TravelMenu';
 
 const townPotentials = {
-  // UK
-  London: ['Crawley', 'Maidstone', 'Winchester'],
-  Crawley: ['Newhaven', 'Folkestone', 'Dover', 'Portsmouth'],
-  Maidstone: ['Dover', 'Folkestone', 'Newhaven'],
-  Winchester: ['Portsmouth', 'Newhaven'],
-  Newhaven: ['Dieppe'],
-  Dover: ['Calais'],
-  Folkestone: ['Calais',],
-  Portsmouth: ['Caen'],
+  // UK - done
+  London: ['Crawley', 'Maidstone', 'Winchester'], // Status: Accurate
+  Crawley: ['Newhaven', 'Folkestone', 'Dover', 'Portsmouth'], // Status: Accurate
+  Maidstone: ['Dover', 'Folkestone', 'Newhaven'], // Status: Accurate
+  Winchester: ['Portsmouth', 'Newhaven'], // Status: Accurate
+  Newhaven: ['Dieppe'], // Status: Accurate
+  Dover: ['Calais'], // Status: Accurate
+  Folkestone: ['Calais',], // Status: Accurate
+  Portsmouth: ['Caen'], // Status: Accurate
 
-  Calais: ['Lille', 'Amiens', 'Roen', 'Brussels'],
-  Lille: ['Paris', 'Amiens', 'Brussels'],
-  Amiens: ['Paris', 'Orleans', 'Reims'],
-  Roen: ['Paris', 'Orleans', 'Reims'],
-  Dieppe: ['Paris', 'Orleans', 'Reims'],
-  Caen: ['Paris', 'Tours', 'Orleans'],
-  Paris: ['Orleans', 'Reims', 'Bordeaux', 'Barcelona'],
-  Orleans: ['Toulouse', 'Bordeaux'],
-  Reims: ['Dijon', 'Strasbourg'],
-  Brussels: ['Antwerp', 'Cologne', 'Frankfurt'],
-  Antwerp: ['Amsterdam', 'Cologne'],
-  Frankfurt: ['Munich', 'Prague', 'Vienna'],
+  // France - done
+  // North
+  Calais: ['Lille', 'Amiens', 'Brussels'], // Status: Accurate
+  Lille: ['Paris', 'Reims', 'Brussels'], // Status: Accurate
+  Amiens: ['Paris', 'Orleans', 'Reims'], // Status: Accurate
+  Dieppe: ['Paris', 'Orleans', 'Reims'], // Status: Accurate
+  Caen: ['Paris', 'Tours', 'Orleans'], // Status: Accurate
+  Paris: ['Orleans', 'Tours', 'Reims', 'Dijon'], // Status: Accurate
+  Tours: ['Bordeaux'], // Status: Accurate
+  Dijon: ['Bern', 'Geneva', 'Lyon'], // Status: Accurate
+  Orleans: ['Tours', 'Dijon', 'Lyon'], // Status: Accurate
+  Reims: ['Luxembourg', 'Saarbrücken'], // Status: Accurate
+  // South
+  Lyon: ['Marseille', 'Nice', 'Geneva', 'Turin'], // Status: Accurate
+  Bordeaux: ['Toulouse', 'Bilbao'], // Status: Accurate
+  Toulouse: ['Andorra'], // Status: Accurate
+  Marseille: ['Nice'], // Status: Accurate
+  Nice: ['Genoa', 'Turin'], // Status: Accurate
+
+  //Andorra - done
+  Andorra: ['Zaragoza', 'Barcelona'], // Status: Accurate
+
+  //Belgium - done
+  Brussels: ['Antwerp', 'Dusseldorf', 'Cologne'], // Status: Accurate
+  Antwerp: ['Amsterdam', 'Duisburg'], // Status: Accurate
+
+  // Germany - done
+  // North
+  Berlin: ['Szczecin', 'Poznań', 'Dresden'], // Status: Accurate
+  Hamburg: ['Flensburg', 'Berlin'], // Status: Accurate
+  Dusseldorf: ['Frankfurt', 'Hanover'], // Status: Accurate
+  Cologne: ['Frankfurt', 'Stuttgart'], // Status: Accurate
+  Duisburg: ['Bremen', 'Hanover'], // Status: Accurate
+  Hanover: ['Hamburg', 'Berlin', 'Leipzig'], // Status: Accurate
+  Leipzig: ['Dresden', 'Prague'], // Status: Accurate
+  Dresden: ['Prague', 'Wrocław'], // Status: Accurate
+  Bremen: ['Hamburg', 'Flensburg'], // Status: Accurate
+  Flensburg: ['Copenhagen'], // Status: Accurate
+  // South
+  Frankfurt: ['Nuremburg ', 'Stuttgart', 'Munich'], // Status: Accurate
+  Munich: ['Innsbruck', 'Salzburg'], // Status: Accurate
+  Stuttgart: ['Munich', 'Nuremberg, Vaduz'], // Status: Accurate
+  Nuremberg: ['Munich', 'Prague'], // Status: Accurate
+  
+  // Denmark - done
+  Copenhagen: ['Jönköping', 'Stockholm'], // Status: Accurate
+
+  // Sweden - done
+  Jönköping: ['Stockholm'], // Status: Accurate
+  Stockholm: ['Turku'], // Status: Accurate
+
+  // Finland - done
+  Turku: ['Helsinki'], // Status: Accurate
+  Helsinki: ['St Petersburg'], // Status: Accurate
+
   Barcelona: ['Valencia', 'Alicante', 'Malaga'],
-  Bordeaux: ['Toulouse', 'Montpellier', 'Barcelona'],
-  Toulouse: ['Montpellier', 'Barcelona', 'Valencia'],
   Valencia: ['Alicante', 'Malaga'],
   Malaga: ['Granada', 'Almeria'],
   Istanbul: ['Ankara', 'Thessaloniki', 'Sofia', 'Bucharest', 'Kiev', 'Moscow'],
@@ -53,13 +94,8 @@ const townPotentials = {
   Prishtina: ['Skopje', 'Tirana'],
   Tirana: ['Skopje', 'Thessaloniki', 'Podgorica'],
   Skopje: ['Sofia', 'Tirana'],
-  Berlin: ['Hamburg', 'Copenhagen', 'Warsaw'],
-  Hamburg: ['Copenhagen', 'Amsterdam'],
+  
   Amsterdam: ['Cologne', 'Brussels'],
-  Copenhagen: ['Oslo', 'Stockholm'],
-  Oslo: ['Stockholm', 'Helsinki'],
-  Stockholm: ['Helsinki'],
-  Helsinki: ['St. Petersburg'],
   StPetersburg: ['Moscow'],
 };
 

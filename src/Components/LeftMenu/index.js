@@ -54,7 +54,7 @@ export default function LeftMenu() {
         </div>
         <div>
         <h3 style={{marginBottom: '5px'}}>Map view</h3>
-        <Map currentTown={currentTown} />
+        <Map  actualTown={actualTown} />
         </div>
         <div>
         <h3 style={{marginBottom: '5px'}}>End destinations</h3>

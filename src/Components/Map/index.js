@@ -1,4 +1,5 @@
 import UK from './UK.JPG'
+import NorthernFrance from './NorthernFrance.JPG'
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './style.css';
@@ -6,13 +7,16 @@ import './style.css';
 export default function Map(props) {
     const [image, setImage] = useState(UK);
       useEffect (() => {
-        if (props.currentTown === 'London' || props.currentTown === 'Dover' || props.currentTown === 'Folkestone' || props.currentTown === 'Crawley' || props.currentTown === 'Maidstone' || props.currentTown === 'Winchester' || props.currentTown === 'Portsmouth' || props.currentTown === 'Newhaven') {
+        if (props.actualTown === 'London' || props.actualTown === 'Dover' || props.actualTown === 'Folkestone' || props.actualTown === 'Crawley' || props.actualTown === 'Maidstone' || props.actualTown === 'Winchester' || props.actualTown === 'Portsmouth' || props.actualTown === 'Newhaven') {
             setImage(UK);
         }
-        else {
-            setImage("");
+        else if (props.actualTown === 'Calais' || props.actualTown === 'Lille' || props.actualTown === 'Amiens' || props.actualTown === 'Dieppe' || props.actualTown === 'Caen' || props.actualTown === 'Paris' || props.actualTown === 'Tours' || props.actualTown === 'Dijon' || props.actualTown === 'Orleans' || props.actualTown === 'Reims') {
+            setImage(NorthernFrance);
         }
-        }, [props.currentTown]);
+        else {
+            setImage(UK);
+        }
+        }, [props.actualTown]);
 
     return (
         <div>
