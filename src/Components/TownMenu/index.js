@@ -70,6 +70,14 @@ const townPotentials = {
   Turku: ['Helsinki'], // Status: Accurate
   Helsinki: ['St Petersburg'], // Status: Accurate
 
+  // Poland
+  Szczecin: ['Gdansk', 'Poznań'],
+  Poznań: ['Wrocław', 'Warsaw'], 
+  Wrocław: ['Warsaw', 'Krakow'], 
+  Warsaw: ['Brest', 'Minsk'], 
+  Krakow: ['Brest', 'Minsk'], 
+
+
   Barcelona: ['Valencia', 'Alicante', 'Malaga'],
   Valencia: ['Alicante', 'Malaga'],
   Malaga: ['Granada', 'Almeria'],
@@ -84,7 +92,6 @@ const townPotentials = {
   Tallinn: ['Riga', 'Helsinki'],
   Riga: ['Vilnius', 'Tallinn'],
   Vilnius: ['Riga', 'Warsaw'],
-  Warsaw: ['Berlin', 'Prague'],
   Prague: ['Berlin', 'Munich', 'Vienna'],
   Vienna: ['Munich', 'Budapest'],
   Budapest: ['Belgrade', 'Vienna'],
