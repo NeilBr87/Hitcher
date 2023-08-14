@@ -23,7 +23,7 @@ const [url, setUrl] = useState('https://upload.wikimedia.org/wikipedia/commons/t
 
     return (
         <div className="townPicture">
-            <img src={url} alt={props.currentTown} style={{width: '380px', height: '250px'}}/>
+            <img src={url} alt={props.currentTown} style={{width: '320px', height: '250px', borderRadius: '10px', border: '4px dashed rgb(20, 120, 160)'}}/>
         </div>
     )
 

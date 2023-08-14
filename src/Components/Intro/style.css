@@ -1,0 +1,33 @@
+.introText {
+    width: 92%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    animation: fadeIn 1s ease-in-out;
+    font-size: 16px;
+}
+
+#introButton {
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    border: 5px groove rgb(180, 200, 200);
+    width: 200px;
+    height: 60px;
+    background-color: rgb(200, 200, 200);
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+@keyframes fadeIn {
+    0% {
+      filter : blur(10px);
+      opacity: 0;
+    }
+    100% {
+      filter : blur(0px);
+      opacity: 1;
+    }
+  }
+

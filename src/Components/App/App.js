@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import LeftMenu from '../LeftMenu';
+import MainMenu from '../MainMenu';
 function App() {
   
   return (
     <div className="App">
-      <LeftMenu />
+      <MainMenu />
     </div>
   );
 }

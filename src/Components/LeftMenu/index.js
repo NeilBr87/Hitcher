@@ -30,7 +30,7 @@ export default function LeftMenu() {
     }
 
     return (
-        <div id="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width: '1076px', height: '800px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
+        <div className="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width: '1076px', margin: '0 auto', marginTop: '2%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '10px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
         <div id="leftBox" style={{ display: 'flex', flexDirection: 'column', width: '160px', paddingLeft: '20px'}}>
           <h3 style={{ textAlign: 'left', fontSize: '24px', fontWeight: 'bold', color: '#f39c12', marginTop: '10px' }}>Explore</h3>
@@ -45,12 +45,23 @@ export default function LeftMenu() {
 
         <div>
           {selection === 'menu' && <TownMenu setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />}
-          {selection === 'reward' && <Rewards />}
         </div>
       </div>
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
+        <div>
+          <h3 style={{marginBottom: '5px'}}>Town view</h3>
         <TownPicture actualTown={actualTown} currentTown={currentTown} className="townPicture" />
+        </div>
+        <div>
+        <h3 style={{marginBottom: '5px'}}>Map view</h3>
         <Map currentTown={currentTown} />
+        </div>
+        <div>
+        <h3 style={{marginBottom: '5px'}}>End destinations</h3>
+        <Rewards />
+        </div>
+        
+        
       </div>
     </div>
     );

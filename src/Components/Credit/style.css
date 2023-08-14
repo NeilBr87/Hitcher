@@ -1,0 +1,16 @@
+.creditText {
+    width: 97%;
+    margin: 0 auto;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    font-size: 18px;
+}
+
+#portfolioLink {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
