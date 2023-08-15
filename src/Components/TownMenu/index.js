@@ -168,6 +168,36 @@ const townPotentials = {
   // Liechtenstein - done
   Vaduz: ['Munich', 'Innsbruck', 'Trento'], // Status: Accurate
 
+  // Italy - done
+  Milan: ['Parma', 'Verona'], // Status: Accurate
+  Parma: ['Bologna', 'Florence', 'Verona'], // Status: Accurate
+  Turin: ['Milan', 'Genoa', 'Bologna'], // Status: Accurate
+  Genoa: ['Bologna', 'Florence', 'Milan'], // Status: Accurate
+  Bologna: ['Florence', 'Ravenna'], // Status: Accurate
+  Florence: ['Rome', 'Ancona'], // Status: Accurate
+  Ancona: ['Zadar', 'Split', 'Pescara'], // Status: Accurate
+  Pescara: ['Foggia'], // Status: Accurate
+  Foggia: ['Bari'], // Status: Accurate
+  Rome: ['Naples'], // Status: Accurate
+  Naples: ['Bari', 'Cosenza'], // Status: Accurate
+  Cosenza: ['Catania'], // Status: Accurate
+  Catania: ['Palermo'], // Status: Accurate
+  Palermo: ['Tunis'], // Status: Accurate
+  Bari: ['Dubrovnik', 'Brindisi', 'Cosenza'], // Status: Accurate
+  Brindisi: ['Patras'], // Status: Accurate
+
+  // Greece - done
+  Patras: ['Athens'], // Status: Accurate
+  Athens: ['Thessaloniki'], // Status: Accurate
+  Thessaloniki: ['Plovdiv', 'Tekirdağ'], // Status: Accurate
+
+  // Turkey - done
+  Tekirdağ: ['Istanbul'], // Status: Accurate
+  Istanbul: ['You have reached a victory city!'], // Status: Accurate
+
+  // Tunisia - done
+  Tunis: ['You have reached a victory city!'], // Status: Accurate
+
   // Austria - done
   Innsbruck: ['Graz', 'Salzburg'], // Status: Accurate
   Graz: ['Zagreb', 'Budapest', 'Bratislava', 'Vienna'], // Status: Accurate
@@ -206,7 +236,8 @@ const townPotentials = {
   Gjakova: ['Pristina', 'Skopje'], // Status: Accurate
   Pristina: ['Skopje', 'Niš'], // Status: Accurate
 
-
+  // Macedonia - done
+  Skopje: ['Sofia', 'Thessaloniki'], // Status: Accurate
 
   // Slovakia - done
   Bratislava: ['Budapest', 'Banská'], // Status: Accurate
@@ -228,46 +259,47 @@ const townPotentials = {
   Brăila: ['Varna', 'Bucharest'], // Status: Accurate
   Timișoara: ['Cluj_Napoca'], // Status: Accurate
 
+  // Albania - done
+  Shkodër: ['Gjakova', 'Tirana'], // Status: Accurate
+  Tirana: ['Gjakova', 'Skopje'], // Status: Accurate
 
   // Bulgaria - done
   Varna: ['You have reached a victory city!'], // Status: Accurate
-  Burgas: ['Istanbul'], // Status: Accurate
+  Burgas: ['Istanbul', 'Varna'], // Status: Accurate
   Sofia: ['Sevlievo', 'Plovdiv'], // Status: Accurate
+  Plovdiv: ['Svilengrad'], // Status: Accurate
+  Svilengrad: ['Istanbul', 'Burgas'], // Status: Accurate
 
   // Moldova - done
   Chișinău: ['Odesa', 'Dnipro', 'Kyiv'], // Status: Accurate
 
-
-
-  
-
-
-
+  // **SOUTHERN ROUTE - TOWARDS AFRICA **
 
   //Andorra - done
   Andorra: ['Zaragoza', 'Barcelona'], // Status: Accurate
 
+  // Spain - done
+  Barcelona: ['Valencia', 'Zaragoza', 'Algiers'], // Status: Accurate
+  Valencia: ['Albacete', 'Murcia'], // Status: Accurate
+  Zaragoza: ['Sigüenza', 'Valencia'], // Status: Accurate
+  Sigüenza: ['Madrid', 'Albacete'], // Status: Accurate
+  Albacete: ['Murcia', 'Villacarrillo'], // Status: Accurate
+  Murcia: ['Almeria', 'Granada'], // Status: Accurate
+  Almeria: ['Granada', 'Ghazaouet'], // Status: Accurate
+  Bilbao: ['León', 'Burgos'], // Status: Accurate
+  Burgos: ['Madrid', 'Salamanca'], // Status: Accurate
+  Salamanca: ['Cáceres', 'Madrid'], // Status: Accurate
+  Cáceres: ['Seville'], // Status: Accurate
+  Malaga: ['Tarifa'], // Status: Accurate
+  Tarifa: ['Tangier'], // Status: Accurate
 
+  // Morocco - done
+  Tangier: ['You have reached a victory city!'], // Status: Accurate
 
+  // Algeria - done
+  Algiers: ['You have reached a victory city!'], // Status: Accurate
+  Ghazaouet: ['You have reached a victory city!'], // Status: Accurate
 
-
-
-  
-  
-
-
-
-  Barcelona: ['Valencia', 'Alicante', 'Malaga'],
-  Valencia: ['Alicante', 'Malaga'],
-  Malaga: ['Granada', 'Almeria'],
-  Istanbul: ['Ankara', 'Thessaloniki', 'Sofia', 'Bucharest', 'Kiev', 'Moscow'],
-  Moscow: ['Kiev', 'Minsk'],
-  Thessaloniki: ['Sofia', 'Istanbul', 'Athens'],
-  Athens: ['Thessaloniki'],
-  Prishtina: ['Skopje', 'Tirana'],
-  Tirana: ['Skopje', 'Thessaloniki', 'Podgorica'],
-  Skopje: ['Sofia', 'Tirana'],
-  
 };
 
 export default function TownMenu(props) {
@@ -359,7 +391,8 @@ export default function TownMenu(props) {
 
         <h2>Day {props.day}</h2>
         {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
-        {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}.</p>}   
+        {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}, {props.country}.</p>}   
+        
         {!evening && (
         <div>     
         {!deciding && !exploring && !travelling && (

@@ -1,0 +1,28 @@
+
+
+.greenText {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 6px;
+    margin-bottom: -6px;
+    color: rgb(0, 110, 0);
+    font-weight: bold;
+}
+
+.orangeText {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 6px;
+    margin-bottom: -6px;
+    color: rgb(205, 135, 0);
+    font-weight: bold;
+}
+
+.redText {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 6px;
+    margin-bottom: -6px;
+    color: rgb(205, 10, 10);
+    font-weight: bold;
+}

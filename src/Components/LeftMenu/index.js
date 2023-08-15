@@ -16,6 +16,7 @@ export default function LeftMenu() {
     const [day, setDay] = useState(1)
     const [time, setTime] = useState(9)
     const [actualTown, setActualTown] = useState('')
+    const [country, setCountry] = useState('UK')
 
     function handleMenuClick() {
         setSelection('menu');
@@ -44,7 +45,7 @@ export default function LeftMenu() {
         </div>
 
         <div>
-          {selection === 'menu' && <TownMenu setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />}
+          {selection === 'menu' && <TownMenu country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />}
         </div>
       </div>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
@@ -54,7 +55,7 @@ export default function LeftMenu() {
         </div>
         <div>
         <h3 style={{marginBottom: '5px'}}>Map view</h3>
-        <Map  actualTown={actualTown} />
+        <Map  actualTown={actualTown} country={country} setCountry={setCountry} />
         </div>
         <div>
         <h3 style={{marginBottom: '5px'}}>End destinations</h3>

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import CarAnimation from '../CarAnimation';
 import './style.css';
 
 export default function TravelMenu(props) {

@@ -11,12 +11,13 @@ export default function Map(props) {
             setImage(UK);
         }
         else if (props.actualTown === 'Calais' || props.actualTown === 'Lille' || props.actualTown === 'Amiens' || props.actualTown === 'Dieppe' || props.actualTown === 'Caen' || props.actualTown === 'Paris' || props.actualTown === 'Tours' || props.actualTown === 'Dijon' || props.actualTown === 'Orleans' || props.actualTown === 'Reims') {
+            props.setCountry('France');
             setImage(NorthernFrance);
         }
         else {
             setImage(UK);
         }
-        }, [props.actualTown]);
+        }, [props.actualTown, props]);
 
     return (
         <div>
