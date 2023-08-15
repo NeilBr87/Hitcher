@@ -34,12 +34,14 @@ const townPotentials = {
   Marseille: ['Nice'], // Status: Accurate
   Nice: ['Genoa', 'Turin'], // Status: Accurate
 
-  //Andorra - done
-  Andorra: ['Zaragoza', 'Barcelona'], // Status: Accurate
+  // **NORTHERN ROUTE - TOWARDS RUSSIA**
 
   //Belgium - done
   Brussels: ['Antwerp', 'Dusseldorf', 'Cologne'], // Status: Accurate
   Antwerp: ['Amsterdam', 'Duisburg'], // Status: Accurate
+
+  //Netherlands - done
+  Amsterdam: ['Dusseldorf', 'Duisburg', 'Bremen'], // Status: Accurate
 
   // Germany - done
   // North
@@ -58,7 +60,7 @@ const townPotentials = {
   Munich: ['Innsbruck', 'Salzburg'], // Status: Accurate
   Stuttgart: ['Munich', 'Nuremberg, Vaduz'], // Status: Accurate
   Nuremberg: ['Munich', 'Prague'], // Status: Accurate
-  
+
   // Denmark - done
   Copenhagen: ['Jönköping', 'Stockholm'], // Status: Accurate
 
@@ -68,14 +70,112 @@ const townPotentials = {
 
   // Finland - done
   Turku: ['Helsinki'], // Status: Accurate
-  Helsinki: ['St Petersburg'], // Status: Accurate
+  Helsinki: ['Petersburg'], // Status: Accurate
 
-  // Poland
-  Szczecin: ['Gdansk', 'Poznań'],
-  Poznań: ['Wrocław', 'Warsaw'], 
-  Wrocław: ['Warsaw', 'Krakow'], 
-  Warsaw: ['Brest', 'Minsk'], 
-  Krakow: ['Brest', 'Minsk'], 
+  // Poland -  done
+  Szczecin: ['Piła', 'Koszalin', 'Poznań'], // Status: Accurate
+  Poznań: ['Łódź', 'Wrocław'], // Status: Accurate
+  Wrocław: ['Krakow', 'Częstochowa', 'Ostrava'], // Status: Accurate
+  Częstochowa: ['Krakow', 'Warsaw'], // Status: Accurate
+  Warsaw: ['Białystok', 'Brest'], // Status: Accurate
+  Białystok: ['Baranavichy', 'Brest'], // Status: Accurate
+  Krakow: ['Košice', 'Warsaw'], // Status: Accurate
+  Łódź: ['Warsaw', 'Krakow'], // Status: Accurate
+  Koszalin: ['Gdansk'], // Status: Accurate
+  Gdansk: ['Kaliningrad'], // Status: Accurate
+
+  // Russia (Baltic coast) - done
+  Kaliningrad: ['Klaipėda', 'Kaunas'], // Status: Accurate
+
+  // Lithuania - done
+  Klaipėda: ['Liepāja', 'Šiauliai'], // Status: Accurate
+  Kaunas: ['Vilnius'], // Status: Accurate
+  Šiauliai: ['Riga'], // Status: Accurate
+  Vilnius: ['Minsk'], // Status: Accurate
+
+  // Latvia - done
+  Liepāja: ['Riga'], // Status: Accurate
+  Riga: ['Pärnu', 'Valmiera'], // Status: Accurate
+  Valmiera: ['Tartu', 'Pskov'], // Status: Accurate
+
+  // Estonia - done
+  Pärnu: ['Tartu', 'Tallinn'], // Status: Accurate
+  Tartu: ['Narva'], // Status: Accurate
+  Narva: ['Petersburg'], // Status: Accurate
+  Tallinn: ['Narva'], // Status: Accurate
+
+  // Belarus - done
+  Brest: ['Baranavichy', 'Lutsk'], // Status: Accurate
+  Baranavichy: ['Minsk', 'Salihorsk'], // Status: Accurate
+  Salihorsk: ['Mazyr', 'Babruysk'], // Status: Accurate
+  Mazyr: ['Gomel', 'Chernihiv'], // Status: Accurate
+  Gomel: ['Chernihiv', 'Klintsy'], // Status: Accurate
+  Minsk: ['Orsha', 'Babruysk', 'Mogilev'], // Status: Accurate
+  Mogilev: ['Orsha', 'Gomel'], // Status: Accurate
+  Babruysk: ['Gomel', 'Mogilev'], // Status: Accurate
+  Orsha: ['Smolensk'], // Status: Accurate
+
+  // Ukraine - done
+  Chernihiv: ['Nizhyn', 'Koryukivka'], // Status: Accurate
+  Nizhyn: ['Baturyn', 'Pyryatyn'], // Status: Accurate
+  Pyryatyn: ['Poltava'], // Status: Accurate
+  Poltava: ['Kharkiv', 'Dnipro'], // Status: Accurate
+  Dnipro: ['Pavlohrad', 'Zaporizhzhia'], // Status: Accurate
+  Pavlohrad: ['Donetsk', 'Kramatorsk'], // Status: Accurate
+  Kramatorsk: ['Luhansk'], // Status: Accurate
+  Luhansk: ['Rostov'], // Status: Accurate
+  Zaporizhzhia: ['Donetsk', 'Mariupol'], // Status: Accurate
+  Donetsk: ['Rostov'], // Status: Accurate
+  Kharkiv: ['Belgorod', 'Donetsk'], // Status: Accurate
+  Koryukivka: ['Sumy', 'Bryansk'], // Status: Accurate
+  Sumy: ['Kharkiv', 'Kursk'], // Status: Accurate
+  Baturyn: ['Sumy'], // Status: Accurate
+  Mariupol: ['Rostov'], // Status: Accurate
+
+  // Russia - done
+  Rostov: ['You have reached a victory city!'], // Status: Accurate
+  Smolensk: ['You have reached a victory city!'], // Status: Accurate
+  Petersburg: ['You have reached a victory city!'], // Status: Accurate
+  Bryansk: ['Roslavl'], // Status: Accurate
+  Roslavl: ['Smolensk'], // Status: Accurate
+  Pskov: ['Luga'], // Status: Accurate
+  Luga: ['Petersburg'], // Status: Accurate
+  Belgorod: ['Kursk', 'Rossosh'], // Status: Accurate
+  Kursk: ['Bryansk'], // Status: Accurate
+  Rossosh: ['Millerovo'], // Status: Accurate
+  Millerovo: ['Rostov'], // Status: Accurate
+
+  // **CENTRAL ROUTE - TOWARDS BLACK SEA **
+
+  // Czechia - done
+  Prague: ['Brno', 'Pardubice'], // Status: Accurate
+  Brno: ['Bratislava', 'Ostrava'], // Status: Accurate
+  Ostrava: ['Krakow', 'Žilina', 'Częstochowa'], // Status: Accurate
+  Pardubice: ['Brno', 'Wrocław', 'Ostrava'], // Status: Accurate
+
+  // Slovakia - done
+  Bratislava: ['Budapest', 'Banská'], // Status: Accurate
+  Banská: ['Košice', 'Krakow', 'Miskolc'], // Status: Accurate
+  Košice: ['Mukachevo', 'Nyíregyháza'], // Status: Accurate
+
+  // Hungary - done
+  Budapest: ['Szeged', 'Oradea', 'Timișoara'], // Status: Accurate
+  Szeged: ['Timișoara', 'Belgrade'], // Status: Accurate
+
+
+
+
+  //Andorra - done
+  Andorra: ['Zaragoza', 'Barcelona'], // Status: Accurate
+
+
+
+
+
+
+  
+  
+
 
 
   Barcelona: ['Valencia', 'Alicante', 'Malaga'],
@@ -83,16 +183,11 @@ const townPotentials = {
   Malaga: ['Granada', 'Almeria'],
   Istanbul: ['Ankara', 'Thessaloniki', 'Sofia', 'Bucharest', 'Kiev', 'Moscow'],
   Moscow: ['Kiev', 'Minsk'],
-  Minsk: ['Vilnius', 'Riga', 'Tallinn', 'Moscow'],
   Sofia: ['Thessaloniki', 'Istanbul', 'Bucharest', 'Belgrade'],
   Bucharest: ['Belgrade', 'Sofia', 'Istanbul', 'Kiev'],
   Kiev: ['Minsk', 'Moscow', 'Chisinau'],
   Thessaloniki: ['Sofia', 'Istanbul', 'Athens'],
   Athens: ['Thessaloniki'],
-  Tallinn: ['Riga', 'Helsinki'],
-  Riga: ['Vilnius', 'Tallinn'],
-  Vilnius: ['Riga', 'Warsaw'],
-  Prague: ['Berlin', 'Munich', 'Vienna'],
   Vienna: ['Munich', 'Budapest'],
   Budapest: ['Belgrade', 'Vienna'],
   Belgrade: ['Sarajevo', 'Bucharest', 'Budapest'],
@@ -102,8 +197,6 @@ const townPotentials = {
   Tirana: ['Skopje', 'Thessaloniki', 'Podgorica'],
   Skopje: ['Sofia', 'Tirana'],
   
-  Amsterdam: ['Cologne', 'Brussels'],
-  StPetersburg: ['Moscow'],
 };
 
 export default function TownMenu(props) {

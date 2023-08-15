@@ -85,7 +85,7 @@ export default function Intro(props) {
         <div className="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '976px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '5px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
             <div style={{ backgroundColor: 'black', color: 'white', height: '780px' }}>
                 <h2>Introduction</h2>
-                <p onClick={introProceed} style={{marginTop: '-10px', marginBottom: '0px'}}>(Skip)</p>
+                <p onClick={introProceed} style={{marginTop: '-10px', marginBottom: '0px', cursor: 'pointer'}}>(Skip)</p>
                 {showPara1 && (
                     <p id="introPara1" className="introText">"Sometimes, if you stand on the bottom rail of a bridge and lean over to watch the river slipping slowly away beneath you, you will suddenly know everything there is to be known."</p>
                 )}
