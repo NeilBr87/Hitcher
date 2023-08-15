@@ -131,6 +131,12 @@ const townPotentials = {
   Sumy: ['Kharkiv', 'Kursk'], // Status: Accurate
   Baturyn: ['Sumy'], // Status: Accurate
   Mariupol: ['Rostov'], // Status: Accurate
+  Mukachevo: ['Khmelnytskyi'], // Status: Accurate
+  Khmelnytskyi: ['Kyiv'], // Status: Accurate
+  Kyiv: ['Poltava', 'Donetsk'], // Status: Accurate
+  Sevastopol: ['Rostov'], // Status: Accurate`
+
+
 
   // Russia - done
   Rostov: ['You have reached a victory city!'], // Status: Accurate
@@ -144,6 +150,7 @@ const townPotentials = {
   Kursk: ['Bryansk'], // Status: Accurate
   Rossosh: ['Millerovo'], // Status: Accurate
   Millerovo: ['Rostov'], // Status: Accurate
+  Klintsy: ['Bryansk'], // Status: Accurate
 
   // **CENTRAL ROUTE - TOWARDS BLACK SEA **
 
@@ -153,14 +160,86 @@ const townPotentials = {
   Ostrava: ['Krakow', 'Žilina', 'Częstochowa'], // Status: Accurate
   Pardubice: ['Brno', 'Wrocław', 'Ostrava'], // Status: Accurate
 
+  // Switzerland - done]
+  Geneva: ['Bern', 'Turin'], // Status: Accurate
+  Bern: ['Milan', 'Zürich'], // Status: Accurate
+  Zürich: ['Stuttgart', 'Milan', 'Vaduz'], // Status: Accurate
+
+  // Liechtenstein - done
+  Vaduz: ['Munich', 'Innsbruck', 'Trento'], // Status: Accurate
+
+  // Austria - done
+  Innsbruck: ['Graz', 'Salzburg'], // Status: Accurate
+  Graz: ['Zagreb', 'Budapest', 'Bratislava', 'Vienna'], // Status: Accurate
+  Salzburg: ['Vienna', 'Linz', 'Graz'], // Status: Accurate
+  Linz: ['Vienna', 'Prague', 'Brno'], // Status: Accurate
+  Vienna: ['Bratislava', 'Budapest', 'Brno'], // Status: Accurate
+
+  // Slovenia - done
+  Llubljana: ['Zagreb', 'Rijeka'], // Status: Accurate
+
+  // Croatia - done
+  Zagreb: ['Gradiška', 'Budapest', 'Osijek'], // Status: Accurate
+  Rijeka: ['Zadar', 'Zagreb'], // Status: Accurate
+  Zadar: ['Split'], // Status: Accurate
+  Split: ['Dubrovnik', 'Mostar', 'Sarajevo'], // Status: Accurate
+  Dubrovnik: ['Podgorica', 'Shkodër', 'Niksic'], // Status: Accurate
+
+  // Montenegro - done
+  Podgorica: ['Shkodër', 'Tirana', 'Berane'], // Status: Accurate
+  Berane: ['Pristina', 'Mitrovica'], // Status: Accurate
+
+  // Bosnia - done
+  Mostar: ['Sarajevo', 'Podgorica', 'Dubrovnik'], // Status: Accurate
+  Sarajevo: ['Tuzla', 'Loznica'], // Status: Accurate
+  Gradiška: ['Osijek', 'Tuzla'], // Status: Accurate
+  Tuzla: ['Loznica', 'Belgrade'], // Status: Accurate
+
+  // Serbia - done
+  Belgrade: ['Kragujevac', 'Timișoara'], // Status: Accurate
+  Loznica: ['Belgrade', 'Kragujevac'], // Status: Accurate
+  Kragujevac: ['Niš'], // Status: Accurate
+  Niš: ['Sofia'], // Status: Accurate
+
+  // Kosovo - done
+  Mitrovica: ['Pristina', 'Skopje'], // Status: Accurate
+  Gjakova: ['Pristina', 'Skopje'], // Status: Accurate
+  Pristina: ['Skopje', 'Niš'], // Status: Accurate
+
+
+
   // Slovakia - done
   Bratislava: ['Budapest', 'Banská'], // Status: Accurate
   Banská: ['Košice', 'Krakow', 'Miskolc'], // Status: Accurate
   Košice: ['Mukachevo', 'Nyíregyháza'], // Status: Accurate
 
   // Hungary - done
-  Budapest: ['Szeged', 'Oradea', 'Timișoara'], // Status: Accurate
+  Budapest: ['Szeged', 'Oradea', 'Timișoara', 'Nyíregyháza'], // Status: Accurate
   Szeged: ['Timișoara', 'Belgrade'], // Status: Accurate
+  Nyíregyháza: ['Mukachevo', 'Oradea'], // Status: Accurate
+
+  // Romania - done
+  Oradea: ['Cluj_Napoca'], // Status: Accurate
+  Cluj_Napoca: ['Brașov', 'Pașcani'], // Status: Accurate
+  Brașov: ['Bucharest', 'Brăila'], // Status: Accurate
+  Bucharest: ['Varna', 'Burgas'], // Status: Accurate
+  Pașcani: ['Iaşi'], // Status: Accurate
+  Iaşi: ['Chișinău', 'Odesa'], // Status: Accurate
+  Brăila: ['Varna', 'Bucharest'], // Status: Accurate
+  Timișoara: ['Cluj_Napoca'], // Status: Accurate
+
+
+  // Bulgaria - done
+  Varna: ['You have reached a victory city!'], // Status: Accurate
+  Burgas: ['Istanbul'], // Status: Accurate
+  Sofia: ['Sevlievo', 'Plovdiv'], // Status: Accurate
+
+  // Moldova - done
+  Chișinău: ['Odesa', 'Dnipro', 'Kyiv'], // Status: Accurate
+
+
+
+  
 
 
 
@@ -183,16 +262,8 @@ const townPotentials = {
   Malaga: ['Granada', 'Almeria'],
   Istanbul: ['Ankara', 'Thessaloniki', 'Sofia', 'Bucharest', 'Kiev', 'Moscow'],
   Moscow: ['Kiev', 'Minsk'],
-  Sofia: ['Thessaloniki', 'Istanbul', 'Bucharest', 'Belgrade'],
-  Bucharest: ['Belgrade', 'Sofia', 'Istanbul', 'Kiev'],
-  Kiev: ['Minsk', 'Moscow', 'Chisinau'],
   Thessaloniki: ['Sofia', 'Istanbul', 'Athens'],
   Athens: ['Thessaloniki'],
-  Vienna: ['Munich', 'Budapest'],
-  Budapest: ['Belgrade', 'Vienna'],
-  Belgrade: ['Sarajevo', 'Bucharest', 'Budapest'],
-  Sarajevo: ['Belgrade', 'Podgorica', 'Tirana'],
-  Podgorica: ['Tirana', 'Prishtina'],
   Prishtina: ['Skopje', 'Tirana'],
   Tirana: ['Skopje', 'Thessaloniki', 'Podgorica'],
   Skopje: ['Sofia', 'Tirana'],
