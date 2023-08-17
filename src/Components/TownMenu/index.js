@@ -383,7 +383,7 @@ export default function TownMenu(props) {
 
     <div>
 
-    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '700px', height: '500px',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(150, 150, 150)' : 'white', color: 'black'}}>
+    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '95%', margin: '0 auto', height: '400px',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(150, 150, 150)' : 'white', color: 'black'}}>
       
 
       
@@ -396,7 +396,7 @@ export default function TownMenu(props) {
         {!evening && (
         <div>     
         {!deciding && !exploring && !travelling && (
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px'}}>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px', width: '300px'}}>
             <button className="keyButtons" onClick={hitchhike}>Hitchhike</button>
             <button className="keyButtons" onClick={handleExploreClick}>Explore</button>
             <button className="keyButtons">Wait</button>

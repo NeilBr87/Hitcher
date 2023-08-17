@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import './style.css';
 import Intro from '../Intro';
-import LeftMenu from '../LeftMenu';
+import MobileUI from '../MobileUI';
 import Instructions from '../Instructions';
 import Credit from '../Credit';
 
@@ -43,7 +43,7 @@ export default function MainMenu () {
             {start && <Intro setGameMenu={setGameMenu} setStart={setStart} />}
             {instructions && <Instructions setMainMenu={setMainMenu} setInstructions={setInstructions}/>}
             {credits && <Credit setMainMenu={setMainMenu} setCredits={setCredits}/>}
-            {gameMenu && <LeftMenu />}
+            {gameMenu && <MobileUI />}
 
         </div>
     )

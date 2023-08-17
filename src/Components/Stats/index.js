@@ -4,35 +4,85 @@ export default function Stats(props) {
   const clampedHealth = Math.min(props.health, 100);
   const clampedFood = Math.min(props.food, 100);
 
+  const statColumnStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: '-30px',
+    marginBottom: '20px',
+    marginLeft: '20px',
+    marginRight: '20px',
+    color: 'white'
+  };
+
   return (
-    <div id="statsBox" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', width: '160px', height: '500px' }}>
-      <h3>Stats</h3>
-      <p style={{ marginBottom: '2px', fontWeight: 'bold' }}>Health</p>
-      <div style={{ width: '140px', height: '16px', border: '2px inset black', borderRadius: '20px' }}>
+    <div
+      id="statsBox"
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+      }}
+    >
+      <div style={statColumnStyle}>
+        <p style={{marginBottom: '10%'}}>Health</p>
         <div
           style={{
-            width: `${clampedHealth}%`,
-            height: '100%',
-            backgroundColor: 'rgb(190, 50, 50)',
+            width: '80px',
+            height: '14px',
+            border: '2px inset black',
             borderRadius: '20px',
           }}
-        ></div>
+        >
+          <div
+            style={{
+              width: `${clampedHealth}%`,
+              height: '100%',
+              backgroundColor: 'rgb(190, 50, 50)',
+              borderRadius: '20px',
+            }}
+          ></div>
+        </div>
       </div>
-      <p style={{ marginBottom: '2px', fontWeight: 'bold' }}>Food level</p>
-      <div style={{ width: '140px', height: '16px', border: '2px inset black', borderRadius: '20px' }}>
+      <div style={statColumnStyle}>
+        <p style={{marginBottom: '10%'}}>Food</p>
         <div
           style={{
-            width: `${clampedFood}%`,
-            height: '100%',
-            backgroundColor: 'rgb(190, 190, 50)',
+            width: '80px',
+            height: '14px',
+            border: '2px inset black',
             borderRadius: '20px',
           }}
-        ></div>
+        >
+          <div
+            style={{
+              width: `${clampedFood}%`,
+              height: '100%',
+              backgroundColor: 'rgb(190, 190, 50)',
+              borderRadius: '20px',
+            }}
+          ></div>
+        </div>
       </div>
-      <p style={{ marginBottom: '3px', fontWeight: 'bold' }}>Money</p>
-      <span style={{ fontWeight: 'bold', color: 'black', backgroundColor: 'rgb(70, 190, 70)', padding: '6px', fontSize: '14px', borderRadius: '5px', border: '3px groove rgb(30, 100, 30)' }}>
-        £{props.money}
-      </span>
+      <div style={statColumnStyle}>
+        <p style={{marginBottom: '10%'}}>Money</p>
+        <span
+          style={{
+            color: 'black',
+            backgroundColor: 'rgb(70, 190, 70)',
+            fontSize: '10px',
+            borderRadius: '20px',
+            border: '2px inset rgb(30, 100, 30)',
+            width: '80px',
+            height: '14px',
+          }}
+        >
+          £{props.money}
+        </span>
+      </div>
     </div>
   );
 }
