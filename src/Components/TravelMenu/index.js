@@ -198,7 +198,21 @@ useEffect(() => {
               <p>{journeyPara3}</p>
               <p>{journeyPara4}</p>
               {reachedTown && (
-                <button onClick={handleProceedClick} className="keyButtons">
+                <button onClick={handleProceedClick} style={{
+            width: '20vw',
+            height: '4vh',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(50, 180, 50)",
+            backgroundColor: 'rgb(80, 210, 80)',
+            borderRadius: '10px',
+            color: 'black',
+            margin: '0 auto',
+            }}>
                   Proceed
                 </button>
               )}

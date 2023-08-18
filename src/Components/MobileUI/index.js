@@ -17,7 +17,7 @@ export default function MobileUI(props) {
     
     return (
 
-        <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 105)', color: 'white', width: '100%', overflow: 'hidden'}}>
+        <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
             <h1 style={{marginBottom: '-2px'}}>Hitcher</h1>
             <Stats health={health} food={food} money={money} />
             <TownMenu country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} />

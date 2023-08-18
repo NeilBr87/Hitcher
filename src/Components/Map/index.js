@@ -187,7 +187,7 @@ export default function Map(props) {
 
     return (
         <div>
-            <img id="mapImage" src={image} alt="UK" style={{width: '180px', height: '140px', borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
+            <img id="mapImage" src={image} alt="UK" style={{width: '36vw', height: '15vh', borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
         </div>
     );
     }

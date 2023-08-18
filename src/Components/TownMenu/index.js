@@ -396,12 +396,69 @@ export default function TownMenu(props) {
         {!evening && (
         <div>     
         {!deciding && !exploring && !travelling && (
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '30px', width: '300px'}}>
-            <button className="keyButtons" onClick={hitchhike}>Hitchhike</button>
-            <button className="keyButtons" onClick={handleExploreClick}>Explore</button>
-            <button className="keyButtons">Wait</button>
-            </div>
+          <div>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px', marginBottom: '2vh'}}>
+            <button style={{
+            width: '30vw',
+            height: '6vh',
+            fontSize: '16px',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(60, 60, 190)",
+            backgroundColor: 'rgb(100, 100, 220)',
+            borderRadius: '10px',
+            color: 'black',
+            fontWeight: 'bold',
 
+            }}onClick={hitchhike}>Hitchhike</button>
+            <button style={{
+            width: '30vw',
+            height: '6vh',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(60, 190, 60)",
+            backgroundColor: 'rgb(80, 210, 80)',
+            borderRadius: '10px',
+            color: 'black',
+            }} onClick={handleExploreClick}>Explore</button>
+          </div>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px'}}>
+            <button style={{
+            width: '30vw',
+            height: '6vh',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(190, 60, 60)",
+            backgroundColor: 'rgb(190, 80, 80)',
+            borderRadius: '10px',
+            color: 'black',
+            }}>Walk</button>
+            <button style={{
+            width: '30vw',
+            height: '6vh',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(160, 90, 40)",
+            backgroundColor: 'rgb(190, 100, 60)',
+            borderRadius: '10px',
+            color: 'black',
+            }}>Wait</button>
+            </div>
+          </div>
             )}
             {exploring && (
               <div>
@@ -411,30 +468,37 @@ export default function TownMenu(props) {
         {deciding && (
           <div>
             <p>You spend a couple of hours with your thumb in the air.</p>
-            <p style={{width: '600px'}}>{message}</p>
+            <p style={{width: '300px'}}>{message}</p>
             <p>Do you agree?</p>
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
             <button style={{
-                border: '5px inset rgb(60, 160, 60)',
-                backgroundColor: 'rgb(100, 200, 100)',
-                fontFamily: 'courier, monospace',
-                width: '70px',
-                height: '40px',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                borderRadius: '5px'
+            width: '20vw',
+            height: '4vh',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(50, 180, 50)",
+            backgroundColor: 'rgb(80, 210, 80)',
+            borderRadius: '10px',
+            color: 'black',
             }}
             onClick={accept}>Yes</button>
             <button style={{
-                border: '5px inset rgb(160, 60, 60)',
-                backgroundColor: 'rgb(200, 100, 100)',
-                fontFamily: 'courier, monospace',
-                width: '70px',
-                height: '40px',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                borderRadius: '5px'
-            }} onClick={decline}>No</button>
+            width: '20vw',
+            height: '4vh',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(180, 50, 50)",
+            backgroundColor: 'rgb(210, 80, 80)',
+            borderRadius: '10px',
+            color: 'black', }} onClick={decline}>No</button>
             </div>
           </div>
         )}
