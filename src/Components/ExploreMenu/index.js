@@ -6,7 +6,7 @@ export default function ExploreMenu(props) {
     const [earnExpanded, setEarnExpanded] = useState(false);
     const [lunchExpanded, setLunchExpanded] = useState(false);
     const [hospitalExpanded, setHospitalExpanded] = useState(false);
-    const [parcelSprintExpanded, setParcelSprintExpanded] = useState(false);
+    // const [parcelSprintExpanded, setParcelSprintExpanded] = useState(false);
     const [hideMenu, setHideMenu] = useState(false);
     const [earnSummary, setEarnSummary] = useState(false);
     const [earnDesc, setEarnDesc] = useState('');
@@ -143,64 +143,59 @@ export default function ExploreMenu(props) {
             {!hideMenu && (
             <div>
                 <p>You decide to explore {props.currentTown}.</p>
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '18px'}}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '18px', marginBottom: '2%'}}>
                     <button onClick={expandEarn} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(120, 180, 90)',
-                        border: '5px inset rgb(60, 120, 60)',
+                        border: '4px groove rgb(60, 120, 60)',
 
                     }}>Earn money</button>
                     
                     <button onClick={lunch} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(180, 180, 90)',
-                        border: '5px inset rgb(120, 120, 90)',
+                        border: '4px groove rgb(120, 120, 90)',
                     }}>Lunch</button>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '18px'}}>
 
                     <button onClick={hospital} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(120, 120, 240)',
-                        border: '5px inset rgb(90, 90, 180)',
+                        border: '4px groove rgb(90, 90, 180)',
                     }}>Hospital</button>
                     <button className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(180, 90, 90)',
-                        border: '5px inset rgb(120, 60, 60)',
+                        border: '4px groove rgb(120, 60, 60)',
                     }}>ParcelSprint</button>
-                </div>
-
-                <button style={{marginTop: '5%'}}className="keyButtons" onClick={goBack}>Back</button>
+                    </div>                
+                    <button style={{marginTop: '5%'}}className="keyButtons" onClick={goBack}>Back</button>
 
             </div>)}
             {earnExpanded && (
             <div>
                 <p>You decide to earn some money.</p>
-                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', gap: '20px'}}>
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '170px'}}>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '30vw',}}>
                         <button onClick={askForChange} className="earnButtons" >Ask for change</button>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Rely on the kindness of strangers.</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Money: Small gain</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Time: 1 hour</p>
-                        <p style={{fontSize: '12px'}}>No effect on food or health</p>
+                        <p style={{marginBottom: '-1px', fontSize: '8px', width: '100px'}}>Rely on the kindness of strangers.</p>
+                        <p style={{marginBottom: '-1px', fontSize: '8px', width: '100px'}}>Small gain, one hour, no health or food loss</p>
+
                     </div>
 
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '170px'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '30vw'}}>
                         <button onClick={browseJobMouse} className="earnButtons">Browse JobMouse</button>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Get a few hours' work from the JobMouse app</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Money: Moderate gain</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Time: 3 hours</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Small food decrease</p>
-                        <p style={{fontSize: '12px'}}>No effect on health</p>
+                        <p style={{marginBottom: '-1px', fontSize: '8px', width: '100px'}}>Get a few hours' work from the JobMouse app</p>
+                        <p style={{marginBottom: '-1px', fontSize: '8px', width: '100px'}}>Moderate gain, three hours, small food decrease</p>
+
                     </div>
 
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '170px'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '30vw'}}>
                         <button onClick={workForRainforest} className="earnButtons">Rainforest Fulfillment Centre</button>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Have a long day shipping packages for Rainforest</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Money: Large gain</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Time: All day</p>
-                        <p style={{marginBottom: '-1px', fontSize: '12px'}}>Moderate food decrease</p>
-                        <p style={{fontSize: '12px'}}>Small health decrease</p>
+                        <p style={{marginBottom: '-1px', fontSize: '8px', width: '100px'}}>Have a long day shipping packages for Rainforest</p>
+                        <p style={{marginBottom: '-1px', fontSize: '8px', width: '100px'}}>Large gain, all day, moderate food decrease, small health decrease</p>
                     </div>    
 
                 </div>
 
-                <button style={{marginTop: '5%'}}className="keyButtons" onClick={closeEarn}>Back</button>
+                <button style={{marginTop: '1%'}} className="keyButtons" onClick={closeEarn}>Back</button>
             </div>)}
             {earnSummary && (
                 <div>
@@ -208,31 +203,31 @@ export default function ExploreMenu(props) {
                     <p>You earned £{wages} in total.</p>
                     <p>{earnFoodDesc}</p>
                     <p>{earnHealthDesc}</p>
-                    <button onClick={goBackAfterEarn}>Back</button>
+                    <button onClick={goBackAfterEarn} className="keyButtons">Back</button>
                 </div>)}
 
             {lunchExpanded && (
                 <div>
 
                     <p>You decide to have lunch.</p>
-                    <p>Note: Lunch is optional in Hitcher. You'll only get a food penalty for missing dinner. But if you're already hungry, you can spend extra and eat lunch.</p>
-                    <p>Eating lunch takes an hour. You'll take no extra time if you don't eat.</p>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
+                    <p style={{width: '320px', margin: '0 auto', marginBottom: '2%'}}>Note: Lunch is optional in Hitcher. You'll only get a food penalty for missing dinner. But if you're already hungry, you can spend extra and eat lunch.</p>
+                    <p style={{width: '320px', margin: '0 auto', marginBottom: '2%'}}>Eating lunch takes an hour. You'll take no extra time if you don't eat.</p>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '10px'}}>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button onClick={noLunch} className="sleepRoughButton" >No lunch</button>
-                            <p style={{marginTop: '5px', fontSize: '14px', width: '140px'}}>No money or food loss</p>
+                            <button onClick={noLunch} className="sleepRoughButton" style={{fontSize: '9px', width: '26vw'}}>No lunch</button>
+                            <p style={{marginTop: '5px', fontSize: '8px', width: '100px'}}>No money or food loss</p>
                         </div>
 
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button onClick={supermarketLunch} className="greenSleepButton">Supermarket food</button>
-                            <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£10</p>
-                            <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +10</p>
+                            <button onClick={supermarketLunch} className="greenSleepButton" style={{fontSize: '9px', width: '26vw'}}>Supermarket food</button>
+                            <p style={{marginTop: '5px', fontSize: '8px'}}>Money: -£10</p>
+                            <p style={{marginTop: '-10px', fontSize: '8px'}}>Food: +10</p>
                         </div>
 
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button onClick={restaurantLunch} className="greenSleepButton">Restaurant</button>
-                            <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£20</p>
-                            <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +30</p>
+                            <button onClick={restaurantLunch} className="greenSleepButton" style={{fontSize: '9px', width: '26vw'}}>Restaurant</button>
+                            <p style={{marginTop: '5px', fontSize: '8px'}}>Money: -£20</p>
+                            <p style={{marginTop: '-10px', fontSize: '8px'}}>Food: +30</p>
                         </div>
                 </div>
 

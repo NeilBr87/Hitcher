@@ -179,7 +179,7 @@ useEffect(() => {
       {! driving && (
         <div>
       <p>You get in the car. It is {drivingDistance} hours to {props.currentTown}.</p>
-      <button onClick={setOff} className="keyButtons">
+      <button onClick={setOff} className="keyButtons" style={{fontSize: '12px'}}>
         Set off
       </button>
       </div>
@@ -192,7 +192,7 @@ useEffect(() => {
             </div>
           )}
           {showContent ? null : (
-            <div style={{width: '680px'}}>
+            <div style={{width: '300px'}}>
               <p>{journeyOutcome}</p>
               <p>{journeyPara2}</p>
               <p>{journeyPara3}</p>

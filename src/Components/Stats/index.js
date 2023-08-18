@@ -61,7 +61,7 @@ export default function Stats(props) {
             style={{
               width: `${clampedFood}%`,
               height: '100%',
-              backgroundColor: 'rgb(190, 190, 50)',
+              backgroundColor: props.noFood ? 'null' : 'rgb(190, 190, 50)',
               borderRadius: '20px',
             }}
           ></div>

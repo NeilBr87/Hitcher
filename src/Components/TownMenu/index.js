@@ -322,6 +322,7 @@ export default function TownMenu(props) {
   const [newTown, setNewTown] = useState('');
   const [sleepStatus, setSleepStatus] = useState("Sleeping rough");
   const [eatingStatus, setEatingStatus] = useState("Going hungry");
+  const [waitConfirm, setWaitConfirm] = useState(false);
 
   const getRandomAmount = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -379,11 +380,20 @@ export default function TownMenu(props) {
     setDeciding(!deciding);
   }
 
+  function wait() {
+    props.setTime(18);
+    setWaitConfirm(false);
+  }
+
+  function handleWaitClick() {
+    setWaitConfirm(true);
+  }
+
   return (
 
     <div>
 
-    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '90%', margin: '0 auto', height: '60vh',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(150, 150, 150)' : 'white', color: 'black'}}>
+    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '90%', margin: '0 auto', height: '60vh',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(90, 90, 90)' : 'white', color: 'black'}}>
       
 
       
@@ -391,11 +401,12 @@ export default function TownMenu(props) {
 
         <h2>Day {props.day}</h2>
         {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
-        {!travelling && <p style={{marginTop: '-2px'}}>You are in {props.currentTown}, {props.country}.</p>}   
+        {!travelling && <p style={{marginTop: '-2px', color: evening? 'white' : 'black'}}>You are in {props.currentTown}, {props.country}.</p>}   
+        {!travelling && props.noFood && <p style={{marginTop: '-2px', color: 'red', width: '300px'}}>Warning: You are starving. You will lose health tonight unless you eat.</p>}
         
         {!evening && (
         <div>     
-        {!deciding && !exploring && !travelling && (
+        {!deciding && !waitConfirm && !exploring && !travelling &&  (
           <div>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px', marginBottom: '2vh'}}>
             <button style={{
@@ -443,7 +454,7 @@ export default function TownMenu(props) {
             borderRadius: '10px',
             color: 'black',
             }}>Walk</button>
-            <button style={{
+            <button onClick={handleWaitClick} style={{
             width: '30vw',
             height: '6vh',
             fontSize: '18px',
@@ -464,6 +475,13 @@ export default function TownMenu(props) {
               <div>
                 <ExploreMenu setTravelling={setTravelling} setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
               </div>)}
+
+        {waitConfirm && (
+          
+          <div>
+            <p>You decide to wait around until evening.</p>
+            <button onClick={wait} className="keyButtons">Proceed</button>
+          </div>)}
         
         {deciding && (
           <div>
@@ -514,10 +532,10 @@ export default function TownMenu(props) {
         <div>
           {eveningBlurb && (
             <div>
-              <p>You run out of time - it's getting late.</p>
-              <p>It's early evening now - too late to hitch a ride or explore town.</p>
+              <p style={{color: 'white'}}>You run out of time - it's getting late.</p>
+              <p style={{color: 'white'}}>It's early evening now - too late to hitch a ride or explore town.</p>
             </div>)}
-          <EveningMenu setEveningBlurb={setEveningBlurb} setDeciding={setDeciding} day={props.day} setDay={props.setDay} time={props.time} setTime={props.setTime} sleepStatus={sleepStatus} setSleepStatus={setSleepStatus} eatingStatus={eatingStatus} setEatingStatus={setEatingStatus} setEvening={setEvening} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney}/>
+          <EveningMenu noFood={props.noFood} setEveningBlurb={setEveningBlurb} setDeciding={setDeciding} day={props.day} setDay={props.setDay} time={props.time} setTime={props.setTime} sleepStatus={sleepStatus} setSleepStatus={setSleepStatus} eatingStatus={eatingStatus} setEatingStatus={setEatingStatus} setEvening={setEvening} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney}/>
       </div>
       )}
       </div>

@@ -4,8 +4,8 @@ import './style.css';
 export default function EveningMenu(props) {
 const [sleepExpanded, setSleepExpanded] = useState(false);
 const [eatExpanded, setEatExpanded] = useState(false);
-const [statusColorSleep, setStatusColorSleep] = useState('red');
-const [statusColorEat, setStatusColorEat] = useState('red');
+const [statusColorSleep, setStatusColorSleep] = useState('rgb(190, 50, 50)');
+const [statusColorEat, setStatusColorEat] = useState('rgb(190, 50, 50)');
 const [dayEnded, setDayEnded] = useState(false);
 const [sleepSummary, setSleepSummary] = useState('');
 const [eatSummary, setEatSummary] = useState('');
@@ -24,41 +24,44 @@ const [isFadingOut, setIsFadingOut] = useState(false);
 
     function handleSleepRoughClick() {
         props.setSleepStatus("Sleeping rough");
-        setStatusColorSleep('red');
+        setStatusColorSleep('rgb(190, 50, 50)');
         setSleepExpanded(false);
     }
 
     function handleHostelClick() {
         props.setSleepStatus("Staying in a hostel");
-        setStatusColorSleep('green');
+        setStatusColorSleep('rgb(40, 170, 40)');
         setSleepExpanded(false);
     }
 
     function handleHotelClick() {
         props.setSleepStatus("Staying in a hotel");
-        setStatusColorSleep('green');
+        setStatusColorSleep('rgb(40, 170, 40)');
         setSleepExpanded(false);
     }
 
     function handleGoHungryClick() {
         props.setEatingStatus("Going hungry");
-        setStatusColorEat('red');
+        setStatusColorEat('rgb(190, 50, 50)');
         setEatExpanded(false);
     }
 
     function handleSupermarketClick() {
         props.setEatingStatus("Eating supermarket food");
-        setStatusColorEat('green');
+        setStatusColorEat('rgb(40, 170, 40)');
         setEatExpanded(false);
     }
 
     function handleRestaurantClick() {
         props.setEatingStatus("Eating restaurant food");
-        setStatusColorEat('green');
+        setStatusColorEat('rgb(40, 170, 40)');
         setEatExpanded(false);
     }
 
     function handleEndDayClick() {
+        if (props.noFood) {
+            props.setHealth(props.health - 40);
+        }
         if (props.sleepStatus === "Sleeping rough") {
             props.setHealth(props.health - 10);
             setSleepSummary("slept on the streets")
@@ -117,6 +120,8 @@ const [isFadingOut, setIsFadingOut] = useState(false);
         }
         props.setEveningBlurb(false)
         setDayEnded(true);
+        props.setSleepStatus("Sleeping rough");
+        props.setEatingStatus("Going hungry");
     }
 
     function handleNextDayClick() {
@@ -139,9 +144,9 @@ const [isFadingOut, setIsFadingOut] = useState(false);
         <div>
         {!dayEnded && 
         <div id={isFadingOut ? 'fadeOut' : ''}>
-            <p>Make choices about food and shelter based on your money, health and hunger.</p>
-            <p>Current sleeping status: <span style={{ fontWeight: 'bold', color: statusColorSleep }}>{props.sleepStatus}</span></p>
-            <p>Current eating status: <span style={{fontWeight: 'bold', color: statusColorEat}}>{props.eatingStatus}</span></p>
+            <p style={{width: '300px', color: 'white', margin: '0 auto'}}>Make choices about food and shelter based on your money, health and hunger.</p>
+            <p style={{color: 'white'}}>Current sleeping status: <span style={{ backgroundColor: statusColorSleep, color: 'white', padding: '4px', border: '1px inset white', borderRadius: '20px'}}>{props.sleepStatus}</span></p>
+            <p style={{color: 'white'}}>Current eating status: <span style={{ backgroundColor: statusColorEat, color: 'white', padding: '3px', border: '1px inset white', borderRadius: '20px'}}>{props.eatingStatus}</span></p>
             {!sleepExpanded && !eatExpanded && 
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
             <button className="keyButtonsEvening" onClick={handleSleepClick}>Change sleeping arrangements</button>
@@ -150,20 +155,20 @@ const [isFadingOut, setIsFadingOut] = useState(false);
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <button className="sleepRoughButton" onClick={handleSleepRoughClick}>Sleep rough</button>
-                    <p style={{marginTop: '5px', fontSize: '14px'}}>Money: No loss</p>
-                    <p style={{marginTop: '-10px', fontSize: '14px'}}>Health: -10</p>
+                    <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: No loss</p>
+                    <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: -10</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <button className="greenSleepButton" onClick={handleHostelClick}>Stay in a hostel</button>
-                    <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£20</p>
-                    <p style={{marginTop: '-10px', fontSize: '14px'}}>Health: No change</p>
+                    <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: -£20</p>
+                    <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: No change</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <button className="greenSleepButton" onClick={handleHotelClick}>Stay in a hotel</button>
-                    <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£50</p>
-                    <p style={{marginTop: '-10px', fontSize: '14px'}}>Health: +20</p>
+                    <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: -£50</p>
+                    <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: +20</p>
                 </div>
             </div>}
             {eatExpanded &&
@@ -190,20 +195,20 @@ const [isFadingOut, setIsFadingOut] = useState(false);
 
             <button onClick={handleEndDayClick} style={{
                 marginTop: sleepExpanded || eatExpanded ? '1%' : '4%',
-                fontFamily: 'courier, monospace',
-                width: '160px',
-                height: '70px',
-                fontSize: '24px',
+                fontFamily: "'Preahvihear', sans-serif",
+                width: '30vw',
+                height: '10vh',
+                fontSize: '16px',
                 fontWeight: 'bold',
-                borderRadius: '5px',
-                backgroundColor: '#435F7D',
-                color: 'white',
-                border: '5px inset #34495e'
+                borderRadius: '10px',
+                backgroundColor: 'rgb(220, 120, 120)',
+                color: 'black',
+                border: '3px inset rgb(160, 60, 60)'
                 }}>End day</button>
         </div>}
 
         {dayEnded &&
-        <div>
+        <div style={{color: 'white'}}>
             <p>Your day is at an end.</p>
             <p>You {sleepSummary} and {eatSummary}.</p>
             <p>{healthSummary}</p>

@@ -1,14 +1,13 @@
 .instructionsText {
-    font-weight: bold;
-    width: 98%;
+    width: 92%;
     margin: 0 auto;
-    padding-bottom: 8px;
-    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-top: 4px;
 }
 
 #backToMenu {
     font-size: 18px;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Preahvihear', sans-serif;
     border: 5px groove rgb(180, 200, 200);
     width: 180px;
     height: 50px;

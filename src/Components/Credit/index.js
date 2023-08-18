@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import './style.css';
 
 export default function Credit(props) {
@@ -9,7 +9,7 @@ export default function Credit(props) {
     }   
 
     return (
-        <div className="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '976px', margin: '0 auto', marginTop: '3%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '5px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
+        <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
             <h1>Credits</h1>
             <p className="creditText">Hitcher was created by Neil Brooks, a rookie software developer based in Oxted, Surrey.</p>
             <p className="creditText">It was primarily created with React and deployed via Netlify.</p>

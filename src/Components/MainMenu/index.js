@@ -30,7 +30,7 @@ export default function MainMenu () {
     return (
         <div>
             {mainMenu && (
-            <div className="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', width: '976px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '5px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
+                <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
                 <h1 className="headingText">Hitcher</h1>
                 <h3 className="headingText" style={{marginTop: '1%'}}>A travelling adventure game</h3>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px', padding: '50px'}}>

@@ -82,8 +82,8 @@ export default function Intro(props) {
     }
 
     return (
-        <div className="greaterContainer" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '976px', margin: '0 auto', marginTop: '6%', paddingTop: '20px', paddingRight: '10px', paddingLeft: '20px', paddingBottom: '20px', borderRadius: '5px', fontFamily: 'Courier, monospace', color: '#d4e1f1' }}>
-            <div style={{ backgroundColor: 'black', color: 'white', height: '780px' }}>
+        <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
+        <div style={{ backgroundColor: 'black', color: 'white', height: '100vh' }}>
                 <h2>Introduction</h2>
                 <p onClick={introProceed} style={{marginTop: '-10px', marginBottom: '0px', cursor: 'pointer'}}>(Skip)</p>
                 {showPara1 && (
