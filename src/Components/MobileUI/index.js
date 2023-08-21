@@ -4,6 +4,7 @@ import TownMenu from '../TownMenu';
 import TownPicture from '../TownPicture';
 import Map from '../Map';
 import './style.css';
+import GameOver from '../GameOver';
 
 export default function MobileUI(props) {
     const [currentTown, setCurrentTown] = useState('London');
@@ -16,6 +17,7 @@ export default function MobileUI(props) {
     const [country, setCountry] = useState('UK')
     const [noFood, setNoFood] = useState(false)
     const [game, setGame] = useState(true)
+    const [gameOverType, setGameOverType] = useState('')
 
     useEffect (() => {
         if (food <= 0) {
@@ -30,6 +32,7 @@ export default function MobileUI(props) {
         }
         if (health <= 0) {
             setHealth(0);
+            setGameOverType('health');
             setGame(false);
         }
         if (health >= 100) {
@@ -46,8 +49,9 @@ export default function MobileUI(props) {
             <h1 id="hitcher" style={{marginBottom: '-2px'}}>Hitcher</h1>
             <Stats health={health} food={food} money={money} noFood={noFood}/>
             {game && (
-            <TownMenu country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
+            <TownMenu setGameOverType={setGameOverType} country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
             )}
+            {!game && (<GameOver gameOverType={gameOverType} />)}
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '3%', marginTop: '5%', marginBottom: '5%',}}>
             <TownPicture actualTown={actualTown} currentTown={currentTown} className="townPicture" />
             <Map  actualTown={actualTown} country={country} setCountry={setCountry} />

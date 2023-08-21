@@ -200,6 +200,8 @@ function handleProceedClickAfterAccident() {
   }
 
   function option1() {
+    setAdditionalOptions(false);
+    setShowContent(false);
     console.log("You chose option 1");
     if (outcomeCoda === "drunk") {
       console.log("option 1 should be working");
@@ -209,10 +211,13 @@ function handleProceedClickAfterAccident() {
       setSummaryPara4("");
       setDecisionSummary("drunkGoodOutcome")
       setShowSummary(true);
+      
     }
   }
   
   function option2() {
+    setAdditionalOptions(false);
+    setShowContent(false);
     console.log("You chose option 2");
     setAdditionalOptions(false);
     if (outcomeCoda === "drunk") {
