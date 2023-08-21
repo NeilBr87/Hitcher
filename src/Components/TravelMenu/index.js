@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './style.css';
+import CarAnimation from '../CarAnimation';
 
 export default function TravelMenu(props) {
   const [journeyOutcome, setJourneyOutcome] = useState('');
@@ -15,6 +16,12 @@ export default function TravelMenu(props) {
   const [additionalOptions, setAdditionalOptions] = useState(false);
   const [button1, setButton1] = useState('');
   const [button2, setButton2] = useState('');
+  const [showSummary, setShowSummary] = useState(false);
+  const [summaryPara1, setSummaryPara1] = useState("");
+  const [summaryPara2, setSummaryPara2] = useState("");
+  const [summaryPara3, setSummaryPara3] = useState("");
+  const [summaryPara4, setSummaryPara4] = useState("");
+  const [decisionSummary, setDecisionSummary] = useState("");
 
 useEffect(() => {
     switch(props.currentTown) {
@@ -25,12 +32,11 @@ useEffect(() => {
 
     }
     const randomEvent = Math.random();
-
-    setOutcomeCoda('');
-    setJourneyPara2('');
-    setJourneyPara3('');
-    setJourneyPara4('');
-    
+    setJourneyOutcome("");
+    setJourneyPara2("");
+    setJourneyPara3("");
+    setJourneyPara4("");  
+    setReachedTown(false);
     
     // 1 in 5 chance
       if (randomEvent < 0.20) {
@@ -57,12 +63,13 @@ useEffect(() => {
         setJourneyPara4("You arrive in town, a lot later than expected.");
         setReachedTown(true);
     // 1 in 15~ chance
-      } else if (randomEvent < 0.07) {
+      } else if (randomEvent < 0.9) {
         setOutcomeCoda("drunk")
         setJourneyOutcome(`You make your way towards town, chatting with the driver. At first you think they're just a bit tired.`);
         setJourneyPara2(`It doesn't take you long to realise they're drunk. You're nowhere near town yet.`);
         setJourneyPara3("You have a choice to make. You can ask them to pull over and get out, or you can stay in the car and hope for the best.");
         setJourneyPara4("What do you do?");
+        setReachedTown(false);
         setAdditionalOptions(true);
         setButton1("Ask them to pull over");
         setButton2("Stay in the car");
@@ -81,6 +88,7 @@ useEffect(() => {
         setJourneyPara2(`Then you see blue lights flashing behind you. The driver pulls over and the police officer approaches the car.`);
         setJourneyPara3("It turns out that the driver took their parents' car without permission. They're arrested, but then the police start asking you questions.");
         setJourneyPara4("You have a choice to make. You can answer the police's questions, or you can refuse to answer.");
+        setReachedTown(false);
         setAdditionalOptions(true);
         setButton1("Answer questions");
         setButton2("Refuse to answer");
@@ -91,15 +99,18 @@ useEffect(() => {
         setJourneyPara2(`After a while, they pull over. "I'm sorry to do this," they say. "You seem to have a lot of cash on you and I'm barely scraping by. So here's what we're going to do. I want £200. If you don't give it to me, I'll leave you here in the middle of nowhere."`);   
         setJourneyPara3("You have a choice to make. You can hand over your money, or you can walk, facing a moderate possible health or food penalty.");
         setJourneyPara4("What do you do?");
+        setReachedTown(false);
         setAdditionalOptions(true);
         setButton1("Hand over money");
         setButton2("Get out of the car");
     // 1 in 100 chance
-      } else if (randomEvent < 0.01) {
+      } else if (randomEvent < 0.002) {
         setOutcomeCoda("heart")
         setJourneyOutcome("You make your way to the next town, chatting aimlessly with the driver.");
         setJourneyPara2(`Then, mid-sentence, they stop. They slump over the wheel, clutching their chest. You realise they're having a serious heart attack.`);
         setJourneyPara3("What do you do? The car is speeding along. You can grab the steering wheel, or you can unbuckle your seatbelt and bail out of the car.");
+        setReachedTown(false);
+
         setAdditionalOptions(true);
         setButton1("Grab the steering wheel");
         setButton2("Bail out of the car");
@@ -138,6 +149,24 @@ useEffect(() => {
   
 }, [props.currentTown]);
 
+function handleProceedClickAfterAccident() {
+  props.setTime(props.time + drivingDistance);
+  props.setActualTown(props.currentTown);
+
+  if (decisionSummary === "drunkGoodOutcome") {
+    props.setHealth(props.health - 10);
+    props.setFood(props.food - 30);
+    props.setTime(18)
+  }
+  if (decisionSummary === "drunkBadOutcome") {
+    props.setHealth(0);
+  }
+  props.setTravelling(false);
+  setDriving(false);
+
+}
+
+
   function handleProceedClick() {
     props.setTime(props.time + drivingDistance);
     props.setActualTown(props.currentTown);
@@ -158,7 +187,6 @@ useEffect(() => {
     if (outcomeCoda === "heavytraffic") {
       props.setTime(props.time + 3);
     }
-    
     setOutcomeCoda('');
     }
 
@@ -171,7 +199,33 @@ useEffect(() => {
     }, 4000); 
   }
 
+  function option1() {
+    console.log("You chose option 1");
+    if (outcomeCoda === "drunk") {
+      console.log("option 1 should be working");
+      setSummaryPara1("You ask the driver to pull over. They look very annoyed, but do so, leaving you on the side of the road.");
+      setSummaryPara2("You call the police, deciding that they could hurt someone. You wait for a while, but no one else stops. You have to walk into town.");
+      setSummaryPara3("You arrive in town, exhausted and hungry. But alive.");
+      setSummaryPara4("");
+      setDecisionSummary("drunkGoodOutcome")
+      setShowSummary(true);
+    }
+  }
+  
+  function option2() {
+    console.log("You chose option 2");
+    setAdditionalOptions(false);
+    if (outcomeCoda === "drunk") {
+      console.log("option 2 should be working");
+      setSummaryPara1("You stay in the car. The driver is slurring his words and driving erratically.");
+      setSummaryPara2("You're starting to wish that you'd asked them to pull over. Then, you see it. A traffic jam up ahead.");
+      setSummaryPara3("The driver is too drunk to stop in time. The car crashes into the back of the car in front, and you're thrown forward.");
+      setSummaryPara4("");
+      setDecisionSummary("drunkBadOutcome")
+      setShowSummary(true);
 
+    }
+  }
 
 
   return (
@@ -187,8 +241,8 @@ useEffect(() => {
       {driving && (
         <div>
           {showContent && (
-            <div>
-              <p id="waitingText">...</p>
+            <div style={{width: '60vw', height: '6vh !important'}}>
+              <CarAnimation />
             </div>
           )}
           {showContent ? null : (
@@ -217,12 +271,47 @@ useEffect(() => {
                 </button>
               )}
               {additionalOptions && (
-                <div>
-                  <button>{button1}</button>
-                  <button>{button2}</button>
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                  <button onClick={option1} style={{
+            width: '30vw',
+            height: '6vh',
+            fontSize: '10px',
+            fontFamily: "'Preahvihear', sans-serif",
+            border: "4px groove rgb(180, 50, 50)",
+            backgroundColor: 'rgb(210, 80, 80)',
+            lineSpacing: '1px',
+            borderRadius: '10px',
+            color: 'black',
+            lineHeight: '90%',
+            margin: '0 auto',
+            }}>{button1}</button>
+                  <button onClick={option2} style={{
+            width: '30vw',
+            height: '6vh',
+            fontSize: '10px',
+            fontFamily: "'Preahvihear', sans-serif",
+            border: "4px groove rgb(180, 50, 50)",
+            backgroundColor: 'rgb(210, 80, 80)',
+            lineSpacing: '1px',
+            borderRadius: '10px',
+            color: 'black',
+            lineHeight: '90%',
+            margin: '0 auto',
+            }}>{button2}</button>
                 </div>)}
             </div>
           )}
+
+          {showSummary && (
+            <div>
+              <p>{summaryPara1}</p>
+              <p>{summaryPara2}</p>
+              <p>{summaryPara3}</p>
+              <p>{summaryPara4}</p>
+              <button onClick={handleProceedClickAfterAccident}>Proceed</button>
+
+            </div>)}
+
         </div>
       )}
     </div>

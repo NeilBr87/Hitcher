@@ -144,13 +144,9 @@ const [isFadingOut, setIsFadingOut] = useState(false);
         <div>
         {!dayEnded && 
         <div id={isFadingOut ? 'fadeOut' : ''}>
-            <p style={{width: '300px', color: 'white', margin: '0 auto'}}>Make choices about food and shelter based on your money, health and hunger.</p>
-            <p style={{color: 'white'}}>Current sleeping status: <span style={{ backgroundColor: statusColorSleep, color: 'white', padding: '4px', border: '1px inset white', borderRadius: '20px'}}>{props.sleepStatus}</span></p>
-            <p style={{color: 'white'}}>Current eating status: <span style={{ backgroundColor: statusColorEat, color: 'white', padding: '3px', border: '1px inset white', borderRadius: '20px'}}>{props.eatingStatus}</span></p>
-            {!sleepExpanded && !eatExpanded && 
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
-            <button className="keyButtonsEvening" onClick={handleSleepClick}>Change sleeping arrangements</button>
-            <button className="keyButtonsEvening" onClick={handleEatClick}>Change eating arrangements</button></div>}
+            <p style={{width: '300px', color: 'white', margin: '0 auto'}}>Make choices about food and shelter based on your money, health and hunger by clicking on the pills below.</p>
+            <p style={{color: 'white'}}>Current sleeping status: <span onClick={handleSleepClick} style={{ backgroundColor: statusColorSleep, color: 'white', padding: '4px', border: '1px inset white', borderRadius: '20px'}}>{props.sleepStatus}</span></p>
+            <p style={{color: 'white'}}>Current eating status: <span onClick={handleEatClick} style={{ backgroundColor: statusColorEat, color: 'white', padding: '3px', border: '1px inset white', borderRadius: '20px'}}>{props.eatingStatus}</span></p>
             {sleepExpanded &&
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>

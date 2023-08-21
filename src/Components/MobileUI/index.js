@@ -15,6 +15,7 @@ export default function MobileUI(props) {
     const [actualTown, setActualTown] = useState('')
     const [country, setCountry] = useState('UK')
     const [noFood, setNoFood] = useState(false)
+    const [game, setGame] = useState(true)
 
     useEffect (() => {
         if (food <= 0) {
@@ -29,6 +30,7 @@ export default function MobileUI(props) {
         }
         if (health <= 0) {
             setHealth(0);
+            setGame(false);
         }
         if (health >= 100) {
             setHealth(100);
@@ -43,7 +45,9 @@ export default function MobileUI(props) {
         <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
             <h1 id="hitcher" style={{marginBottom: '-2px'}}>Hitcher</h1>
             <Stats health={health} food={food} money={money} noFood={noFood}/>
+            {game && (
             <TownMenu country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
+            )}
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '3%', marginTop: '5%', marginBottom: '5%',}}>
             <TownPicture actualTown={actualTown} currentTown={currentTown} className="townPicture" />
             <Map  actualTown={actualTown} country={country} setCountry={setCountry} />

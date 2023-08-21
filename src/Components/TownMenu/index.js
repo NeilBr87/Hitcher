@@ -26,7 +26,7 @@ const townPotentials = {
   Tours: ['Bordeaux'], // Status: Accurate
   Dijon: ['Bern', 'Geneva', 'Lyon'], // Status: Accurate
   Orleans: ['Tours', 'Dijon', 'Lyon'], // Status: Accurate
-  Reims: ['Luxembourg', 'Saarbrücken'], // Status: Accurate
+  Reims: ['Luxembourg'], // Status: Accurate
   // South
   Lyon: ['Marseille', 'Nice', 'Geneva', 'Turin'], // Status: Accurate
   Bordeaux: ['Toulouse', 'Bilbao'], // Status: Accurate

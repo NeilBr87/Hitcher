@@ -17,7 +17,8 @@ export default function Credit(props) {
             <p className="creditText">Other credits are as follows:</p>
             <p className="creditText">Maps courtesy of Google Maps (always Creative Commons) </p>
             <p className="creditText">Town views courtesy of Wikipedia (always creative commons - checked in each instance as policy isn't blanket)</p>
-            <p className="creditText">Notepad courtesy of Luis Ouriach (Figma) - free to use</p>
+            <p className="creditText">Road animation courtesy of Konker on Codepen </p>
+
             <button onClick={goBackToMenu} id="backToMenu">Back to main</button>
             </div>
 
