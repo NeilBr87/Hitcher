@@ -51,6 +51,7 @@ export default function Intro(props) {
             setTextPara2("You are in intensive care in a hospital. You're alive, but there's no way you can continue your journey.");
             setTextPara3("You T5CGZA R4KFZC call George and tell him the bad news. He's disappointed, but he tells you that once you've recovered, you're more than welcome to try again.");
             setTextPara4("Game Over");
+            setTextPara5("");
             setShowPara5(false);
         }
     }, [props.gameOverType]);
