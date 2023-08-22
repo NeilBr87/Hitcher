@@ -35,8 +35,15 @@ useEffect(() => {
     setJourneyOutcome("");
     setJourneyPara2("");
     setJourneyPara3("");
-    setJourneyPara4("");  
+    setJourneyPara4("");
+    setSummaryPara1("");
+    setSummaryPara2("");
+    setSummaryPara3("");
+    setSummaryPara4("");
+    setDecisionSummary("");
+    setShowSummary(false);  
     setReachedTown(false);
+    setAdditionalOptions(false);
     
     // 1 in 5 chance
       if (randomEvent < 0.20) {
@@ -63,7 +70,7 @@ useEffect(() => {
         setJourneyPara4("You arrive in town, a lot later than expected.");
         setReachedTown(true);
     // 1 in 15~ chance
-      } else if (randomEvent < 0.9) {
+      } else if (randomEvent < 0.07) {
         setOutcomeCoda("drunk")
         setJourneyOutcome(`You make your way towards town, chatting with the driver. At first you think they're just a bit tired.`);
         setJourneyPara2(`It doesn't take you long to realise they're drunk. You're nowhere near town yet.`);
@@ -122,8 +129,8 @@ useEffect(() => {
         setJourneyPara3("They tell you about how they used to love picking up hitchkikers - and making them disappear.");
         setJourneyPara4("You're in the car with a dangerous person. What do you want to do?.");
         setAdditionalOptions(true);
-        setButton1("Try to talk them down");
-        setButton2("Hit them and run out of the car.");
+        setButton1("Hit them and run out of the car");
+        setButton2("Try to talk them down.");
     // 1 in 200 chance
       } else if (randomEvent < 0.005) {
         setOutcomeCoda("vampire")
@@ -136,11 +143,12 @@ useEffect(() => {
         setButton2("Make the sign of a crucifix with your fingers and evoke a prayer.");
     // 1 in 500 chance
       } else if (randomEvent < 0.002) {
-        setJourneyOutcome("abducted");
+        setOutcomeCoda("abducted");
         setJourneyOutcome("You make your way to the next town, chatting aimlessly with the driver.");
         setJourneyPara2(`Even though you were on the motorway, you soon find yourself on an isolated stretch of road. The driver seems as confused as you.`);
         setJourneyPara3("Then you see it. A huge, sinister craft in the middle of the sky above you. A beam of light shines down, and you feel yourself being lifted up.");
         setJourneyPara4("You're abducted by aliens. You're never seen again.");
+          setReachedTown(true);
       } else {
         setJourneyOutcome("You make your way to the next town, chatting aimlessly with the driver.");
         setJourneyPara2("You arrive at your destination safely.");
@@ -161,6 +169,41 @@ function handleProceedClickAfterAccident() {
   if (decisionSummary === "drunkBadOutcome") {
     props.setHealth(0);
   }
+  if (decisionSummary === "policeGoodOutcome") {
+    props.setTime(props.time + 1);
+  }
+  if (decisionSummary === "policeBadOutcome") {
+    props.setHealth(props.health - 20);
+    props.setDay(props.day + 2);
+    props.setTime(9);
+  }
+  if (decisionSummary === "robberyPay200") {
+    props.setMoney(props.money - 200);
+  }
+  if (decisionSummary === "robberyPayAll") {
+    props.setMoney(0);
+  }
+  if (decisionSummary === "robberyNoMoney") {
+    props.setMoney(10);
+  }
+  if (decisionSummary === "heartGoodOutcome") {
+    props.setTime(props.time + 3);
+  }
+  if (decisionSummary === "heartBadOutcome") {
+    props.setHealth(props.health - 40);
+    props.setDay(props.day + 4);
+    props.setTime(9);
+  }
+  if (decisionSummary === "killerRunOutcome") {
+    props.setTime(18)
+    props.setHealth(props.health - 30);
+    props.setFood(props.food - 40);
+  }
+  if (decisionSummary === "vampireDeathOutcome") {
+    props.setGame(false)
+    props.setGameOverType("vampire");
+  }
+  
   props.setTravelling(false);
   setDriving(false);
 
@@ -187,6 +230,10 @@ function handleProceedClickAfterAccident() {
     if (outcomeCoda === "heavytraffic") {
       props.setTime(props.time + 3);
     }
+    if (outcomeCoda === "abducted") {
+      props.setGame(false)
+      props.setGameOverType("abducted");
+    }
     setOutcomeCoda('');
     }
 
@@ -202,33 +249,133 @@ function handleProceedClickAfterAccident() {
   function option1() {
     setAdditionalOptions(false);
     setShowContent(false);
+    setJourneyOutcome("");
+    setJourneyPara2("");
+    setJourneyPara3("");
+    setJourneyPara4("");
     console.log("You chose option 1");
     if (outcomeCoda === "drunk") {
-      console.log("option 1 should be working");
       setSummaryPara1("You ask the driver to pull over. They look very annoyed, but do so, leaving you on the side of the road.");
       setSummaryPara2("You call the police, deciding that they could hurt someone. You wait for a while, but no one else stops. You have to walk into town.");
       setSummaryPara3("You arrive in town, exhausted and hungry. But alive.");
       setSummaryPara4("");
       setDecisionSummary("drunkGoodOutcome")
       setShowSummary(true);
-      
     }
+  if (outcomeCoda === "police") {
+    setSummaryPara1("You decide the best course of action is to answer the police's questions honestly.");
+    setSummaryPara2("They're skeptical at first, but soon they're confident that you've got nothing to do with the theft.");
+    setSummaryPara3(`They're taking the driver to be booked in ${props.currentTown}. They give you a lift to town.`);
+    setSummaryPara4("You arrive in good time.");
+    setDecisionSummary("policeGoodOutcome")
+    setShowSummary(true);
   }
+  if (outcomeCoda === "robbery" && props.money >= 200) {
+    setSummaryPara1("You hand over your money reluctantly. The driver thanks you and is apologetic.");
+    setSummaryPara2("You arrive in town a short time later, resentful and broke but on time.");
+    setSummaryPara3("");
+    setSummaryPara4("");
+    setDecisionSummary("robberyPay200")
+    setShowSummary(true);
+  }
+  if (outcomeCoda === "robbery" && props.money < 200) {
+    setSummaryPara1("You don't have £200, and you tell the driver as such.");
+    setSummaryPara2("They seem disappointed, but take all of it and keep driving into town.");
+    setSummaryPara3("You arrive in town, penniless but on time.");
+    setSummaryPara4("");
+    setDecisionSummary("robberyPayAll")
+    setShowSummary(true);
+  }
+  if (outcomeCoda === "robbery" && props.money <= 0) {
+    setSummaryPara1("You don't have any money, and you tell the driver as such.");
+    setSummaryPara2("They seem disappointed, but agree to keep driving into town seeing as you're completely broke.");
+    setSummaryPara3("When you arrive, they give you £10 and apologise for the attempt to steal from you.");
+    setSummaryPara4("");
+    setDecisionSummary("robberyNoMoney")
+    setShowSummary(true);
+  }
+  if (outcomeCoda === "heart") {
+    setSummaryPara1("You grab the steering wheel, forcing the car to the side of the road before anything terrible can happen.");
+    setSummaryPara2("You give the driver first aid to the best of your knowledge, and call an ambulance.");
+    setSummaryPara3(`They're going to be okay. The takes them to a hospital in town and give you a lift.`);
+    setSummaryPara4("You've lost a bit of time, and got a hell of a fright, but you're alive.");
+    setDecisionSummary("heartGoodOutcome")
+    setShowSummary(true);
+  }
+  if (outcomeCoda === "killer") {
+    setSummaryPara1("You hit the driver hard, and they slump over the wheel. You open the door and run out of the car.");
+    setSummaryPara2("You run into the woods, and don't stop running until you're sure you're safe.");
+    setSummaryPara3("You're shaken, but alive. You don't get into town until late evening, and you're exhausted and hungry.");
+    setSummaryPara4("");
+    setDecisionSummary("killerRunOutcome")
+    setShowSummary(true);
+  }
+  if (outcomeCoda === "vampire") {
+    setSummaryPara1("You run out of the car, screaming. Your assailant, unfortunately, is faster. They move with impossible speed.");
+    setSummaryPara2("They manage to knock you over, and the last thing you see is their fangs descending towards your neck.");
+    setSummaryPara3("You have been killed by a vampire. You are never seen again.");
+    setSummaryPara4("");
+    setDecisionSummary("vampireDeathOutcome")
+    setShowSummary(true);
+  }
+}
   
   function option2() {
     setAdditionalOptions(false);
     setShowContent(false);
     console.log("You chose option 2");
     setAdditionalOptions(false);
+    setJourneyOutcome("");
+    setJourneyPara2("");
+    setJourneyPara3("");
+    setJourneyPara4("");
     if (outcomeCoda === "drunk") {
-      console.log("option 2 should be working");
       setSummaryPara1("You stay in the car. The driver is slurring his words and driving erratically.");
       setSummaryPara2("You're starting to wish that you'd asked them to pull over. Then, you see it. A traffic jam up ahead.");
       setSummaryPara3("The driver is too drunk to stop in time. The car crashes into the back of the car in front, and you're thrown forward.");
       setSummaryPara4("");
       setDecisionSummary("drunkBadOutcome")
       setShowSummary(true);
-
+    }
+    if (outcomeCoda === "police") {
+      setSummaryPara1("You decide the best course of action is to refuse to answer the police's questions.");
+      setSummaryPara2(`They very quickly go from skeptical to suspicious. They arrest you and take you to the police station in ${props.currentTown}`);
+      setSummaryPara3(`You're in the holding cell for a day before the police conclude that you had nothing to do wtih the theft.`);
+      setSummaryPara4("You've over a day and some health.");
+      setDecisionSummary("policeBadOutcome")
+      setShowSummary(true);
+    }
+    if (outcomeCoda === "robbery") {
+      setSummaryPara1("You tell the driver no deal and unbuckle your seatbelt. ");
+      setSummaryPara2(`The driver pauses. "Wait," they say. "You'll be walking for days if I let you out here. Just stay in the car. I'll take you to town."`);
+      setSummaryPara3("The rest of the journey is silent. You imagine that the driver is both sad at losing out on the money and guilty for demanding it in the first place.");
+      setSummaryPara4("You thank them and get out of the car.");
+      setDecisionSummary("robberyNoGive")
+      setShowSummary(true);
+    }
+    if (outcomeCoda === "heart") {
+      setSummaryPara1("You unbuckle your seatbelt bail out of the car as it tears down the road.");
+      setSummaryPara2("The driver plows into the back of a lorry. You hit the road, hard.");
+      setSummaryPara3("You're badly hurt. You're taken to hospital. The driver is dead, and there's a chance you could have saved them.");
+      setSummaryPara4("You lose three days, some health, and a lot of karma.");
+      setDecisionSummary("heartBadOutcome")
+      setShowSummary(true);
+    }
+    if (outcomeCoda === "killer") {
+      setSummaryPara1("You try to talk them down. You implore them to turn themselves in, to get help. You tell them that you're scared.");
+      setSummaryPara2("The killer raises a hand as if to strike - then lays their hand on your shoulder.");
+      setSummaryPara3("They apologise profusely and tell you it was a stupid joke.");
+      setSummaryPara4("By the time the two of you get into town, you can sort of see the funny side.");
+      setDecisionSummary("killerTalkOutcome")
+      setShowSummary(true);
+    }
+    if (outcomeCoda === "vampire") {
+      setSummaryPara1("You make the sign of a crucifix with your fingers and evoke a prayer.");
+      setSummaryPara2("The vampire is initially startled, but quickly rebounds with a laugh over your gesture.");
+      setSummaryPara3("The last thing you see is their fangs descending towards your neck.");
+      setSummaryPara4("You have been killed by a vampire. You are never seen again.");
+      setDecisionSummary("vampireDeathOutcome")
+      setShowSummary(true);
     }
   }
 
@@ -309,11 +456,11 @@ function handleProceedClickAfterAccident() {
 
           {showSummary && (
             <div>
-              <p>{summaryPara1}</p>
-              <p>{summaryPara2}</p>
-              <p>{summaryPara3}</p>
-              <p>{summaryPara4}</p>
-              <button onClick={handleProceedClickAfterAccident}>Proceed</button>
+              <p style={{width: '320px'}}>{summaryPara1}</p>
+              <p style={{width: '320px'}}>{summaryPara2}</p>
+              <p style={{width: '320px'}}>{summaryPara3}</p>
+              <p style={{width: '320px'}}>{summaryPara4}</p>
+              <button className="keyButtons" onClick={handleProceedClickAfterAccident}>Proceed</button>
 
             </div>)}
 

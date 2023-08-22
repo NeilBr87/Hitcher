@@ -523,7 +523,7 @@ export default function TownMenu(props) {
 
         {travelling && (
           <div>
-            <TravelMenu setActualTown={props.setActualTown} setTime={props.setTime} time={props.time} setTravelling={setTravelling} currentTown={props.currentTown} health={props.health} food={props.food} setHealth={props.setHealth} setFood={props.setFood} />
+            <TravelMenu setGame={props.setGame} setGameOverType={props.setGameOverType} money={props.money} setMoney={props.setMoney} day={props.day} setDay={props.setDay}  setActualTown={props.setActualTown} setTime={props.setTime} time={props.time} setTravelling={setTravelling} currentTown={props.currentTown} health={props.health} food={props.food} setHealth={props.setHealth} setFood={props.setFood} />
           </div>
         )}
 

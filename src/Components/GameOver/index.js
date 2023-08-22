@@ -49,10 +49,24 @@ export default function Intro(props) {
         if (props.gameOverType === 'health') {
             setTextPara1('You have run out of health.');
             setTextPara2("You are in intensive care in a hospital. You're alive, but there's no way you can continue your journey.");
-            setTextPara3("You T5CGZA R4KFZC call George and tell him the bad news. He's disappointed, but he tells you that once you've recovered, you're more than welcome to try again.");
+            setTextPara3("You call George and tell him the bad news. He's disappointed, but he tells you that once you've recovered, you're more than welcome to try again.");
             setTextPara4("Game Over");
             setTextPara5("");
             setShowPara5(false);
+        }
+        if (props.gameOverType === 'vampire') {
+            setTextPara1("Dark things lurk on the open road. You never would have believed them before. Now it's too late.");
+            setTextPara2("You are drained and left on the side of the road.");
+            setTextPara3("Of course, as death only ends the current run, you are more than welcome to try again.");
+            setTextPara4("Game Over");
+            setTextPara5("Hint: Only certain items you pick up in your journey will help you against the supernatural.");
+        }
+        if (props.gameOverType === 'abducted') {
+            setTextPara1("The truth, unfortunately for you, is out there.");
+            setTextPara2("You are abducted and never seen on earth again.");
+            setTextPara3("Of course, as death - or whatever grim fate awaits you on that ship - only ends the current run, you are more than welcome to try again.");
+            setTextPara4("Game Over");
+            setTextPara5("");
         }
     }, [props.gameOverType]);
 

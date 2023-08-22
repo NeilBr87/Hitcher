@@ -8,6 +8,22 @@
     animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
   }
   
+  .keyButtons {
+    width: 20vw;
+    height: 4vh;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Preahvihear', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px groove rgb(50, 180, 50);
+    background-color: rgb(80, 210, 80);
+    border-radius: 10px;
+    color: black;
+    margin: 0 auto;
+  }
+  
   @keyframes typing {
     from { width: 0 }
     to { width: 100% }

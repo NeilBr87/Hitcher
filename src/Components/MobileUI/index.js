@@ -49,7 +49,7 @@ export default function MobileUI(props) {
             <h1 id="hitcher" style={{marginBottom: '-2px'}}>Hitcher</h1>
             <Stats health={health} food={food} money={money} noFood={noFood}/>
             {game && (
-            <TownMenu setGameOverType={setGameOverType} country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
+            <TownMenu setGameOverType={setGameOverType} setGame={setGame} country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
             )}
             {!game && (<GameOver gameOverType={gameOverType} />)}
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '3%', marginTop: '5%', marginBottom: '5%',}}>
