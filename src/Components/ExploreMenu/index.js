@@ -6,7 +6,7 @@ export default function ExploreMenu(props) {
     const [earnExpanded, setEarnExpanded] = useState(false);
     const [lunchExpanded, setLunchExpanded] = useState(false);
     const [hospitalExpanded, setHospitalExpanded] = useState(false);
-    // const [parcelSprintExpanded, setParcelSprintExpanded] = useState(false);
+    const [parcelSprintExpanded, setParcelSprintExpanded] = useState(false);
     const [hideMenu, setHideMenu] = useState(false);
     const [earnSummary, setEarnSummary] = useState(false);
     const [earnDesc, setEarnDesc] = useState('');
@@ -138,6 +138,17 @@ export default function ExploreMenu(props) {
         setHideMenu(false);
     }
 
+    function closeParcelSprint() {
+        setParcelSprintExpanded(false);
+        setHideMenu(false);
+    }
+
+    function parcelSprint() {
+        setHideMenu(true);
+        setParcelSprintExpanded(true);
+    }
+
+
     return (
         <div>
             {!hideMenu && (
@@ -161,7 +172,7 @@ export default function ExploreMenu(props) {
                         backgroundColor: 'rgb(120, 120, 240)',
                         border: '4px groove rgb(90, 90, 180)',
                     }}>Hospital</button>
-                    <button className="exploreKeyButtons" style={{
+                    <button onClick={parcelSprint} className="exploreKeyButtons" style={{
                         backgroundColor: 'rgb(180, 90, 90)',
                         border: '4px groove rgb(120, 60, 60)',
                     }}>ParcelSprint</button>
@@ -244,30 +255,45 @@ export default function ExploreMenu(props) {
                                 <p>Do you heal?</p>
                                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
                                 <button style={{
-                                    border: '5px inset rgb(60, 160, 60)',
-                                    backgroundColor: 'rgb(100, 200, 100)',
-                                    fontFamily: 'courier, monospace',
-                                    width: '70px',
-                                    height: '40px',
-                                    fontSize: '16px',
-                                    fontWeight: 'bold',
-                                    borderRadius: '5px'
-                                }} onClick={heal}>Yes</button>
+            width: '20vw',
+            height: '4vh',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(50, 180, 50)",
+            backgroundColor: 'rgb(80, 210, 80)',
+            borderRadius: '10px',
+            color: 'black',
+            }}onClick={heal}>Yes</button>
                                 <button onClick={closeHospital} style={{
-                                    border: '5px inset rgb(160, 60, 60)',
-                                    backgroundColor: 'rgb(200, 100, 100)',
-                                    fontFamily: 'courier, monospace',
-                                    width: '70px',
-                                    height: '40px',
-                                    fontSize: '16px',
-                                    fontWeight: 'bold',
-                                    borderRadius: '5px'
-                                }}>No</button>
+            width: '20vw',
+            height: '4vh',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            fontFamily: "'Preahvihear', sans-serif",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: "4px groove rgb(180, 50, 50)",
+            backgroundColor: 'rgb(210, 80, 80)',
+            borderRadius: '10px',
+            color: 'black', }}>No</button>
                             </div>
                             </div>)}
-                            <button onClick={closeHospital} className="keyButtons">Back</button>
+                            <button onClick={closeHospital} style={{marginTop: '4%'}} className="keyButtons">Back</button>
 
                     </div>)}
+
+            {parcelSprintExpanded && (
+                <div>
+                    <p style={{width: '320px', margin: '0 auto'}}>You go into the local branch of ParcelSprint, the company that hires freelance couriers.</p>
+                    <p>It's an efficient way to make money as you explore.</p>
+                    <p style={{width: '320px', margin: '0 auto'}}>There's an assistant at the counter. "I'm sorry," he says. "We're currently being set up. Look out for us next update...I mean month."</p>
+                    <button onClick={closeParcelSprint} style={{marginTop: '4%'}} className="keyButtons">Back</button>
+                </div>)}
 
         </div>
     );

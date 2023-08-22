@@ -10,6 +10,7 @@ Plan as follows:
 2. Create transport matrix using townPotentials object: ✔️ (Full list AI-generated but needs to be checked and expanded)
 3. Link menu:
 * Town menu: ✔️
+* Inventory: ✔️
 * Map: 🟠 (UK map created, need to create others and link to location using if statements)
 * Reward Cities: ✔️
 * Deliveries: ❌ - possible future update

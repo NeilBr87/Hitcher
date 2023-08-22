@@ -3,6 +3,7 @@ import './style.css';
 import EveningMenu from '../EveningMenu';
 import ExploreMenu from '../ExploreMenu';
 import TravelMenu from '../TravelMenu';
+import WalkMenu from '../WalkMenu';
 
 const townPotentials = {
   // UK - done
@@ -323,6 +324,7 @@ export default function TownMenu(props) {
   const [sleepStatus, setSleepStatus] = useState("Sleeping rough");
   const [eatingStatus, setEatingStatus] = useState("Going hungry");
   const [waitConfirm, setWaitConfirm] = useState(false);
+  const [walkConfirm, setWalkConfirm] = useState(false);
 
   const getRandomAmount = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -389,6 +391,10 @@ export default function TownMenu(props) {
     setWaitConfirm(true);
   }
 
+  function walk() {
+    setWalkConfirm(true);
+  }
+
   return (
 
     <div>
@@ -400,13 +406,13 @@ export default function TownMenu(props) {
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
 
         <h2>Day {props.day}</h2>
-        {!evening && <h3 style={{marginTop: '-2px'}}>{props.time}:00</h3>}
+        {!evening && <h3 id="clock" style={{marginTop: '-2px'}}>{props.time}:00</h3>}
         {!travelling && <p style={{marginTop: '-2px', color: evening? 'white' : 'black'}}>You are in {props.currentTown}, {props.country}.</p>}   
         {!travelling && props.noFood && <p style={{marginTop: '-2px', color: 'red', width: '300px'}}>Warning: You are starving. You will lose health tonight unless you eat.</p>}
         
         {!evening && (
         <div>     
-        {!deciding && !waitConfirm && !exploring && !travelling &&  (
+        {!deciding && !walkConfirm && !waitConfirm && !exploring && !travelling && (
           <div>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px', marginBottom: '2vh'}}>
             <button style={{
@@ -440,7 +446,7 @@ export default function TownMenu(props) {
             }} onClick={handleExploreClick}>Explore</button>
           </div>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px'}}>
-            <button style={{
+            <button onClick={walk} style={{
             width: '30vw',
             height: '6vh',
             fontSize: '18px',
@@ -475,6 +481,13 @@ export default function TownMenu(props) {
               <div>
                 <ExploreMenu setTravelling={setTravelling} setExploring={setExploring} currentTown={props.currentTown} setCurrentTown={props.setCurrentTown} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime} />
               </div>)}
+
+        {walkConfirm && (
+          
+          <div>
+            <WalkMenu setWalkConfirm={setWalkConfirm} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime}/>
+          </div>)}
+        
 
         {waitConfirm && (
           

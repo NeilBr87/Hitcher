@@ -38,6 +38,19 @@ text-align: left;
   animation: fadeIn 1s ease-in-out;
 }
 
+#clock {
+  font-family: 'Preahvihear', sans-serif;
+  font-size: 16px;
+  background-color: rgb(240, 240, 240);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 10px;
+  border: 2px groove black;
+
+}
+
   @keyframes fadeIn {
     0% {
       filter : blur(10px);

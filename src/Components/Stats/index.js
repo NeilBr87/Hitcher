@@ -1,8 +1,15 @@
 import React from 'react';
+import Inventory from './Inventory.JPG'
 
 export default function Stats(props) {
   const clampedHealth = Math.min(props.health, 100);
   const clampedFood = Math.min(props.food, 100);
+
+  function openInventory() {
+    if (props.setInventoryOpen) {
+      props.setInventoryOpen((prevOpen) => !prevOpen); // Toggle the previous state
+    }
+  }
 
   const statColumnStyle = {
     display: 'flex',
@@ -17,6 +24,7 @@ export default function Stats(props) {
   };
 
   return (
+    <div>
     <div
       id="statsBox"
       style={{
@@ -82,6 +90,12 @@ export default function Stats(props) {
         >
           £{props.money}
         </span>
+      </div>
+    </div>
+
+      <div>
+        <img onClick={openInventory} src={Inventory} alt="inventory" style={{width: '8vw', marginBottom: '-4%'}}></img>
+        <p style={{fontSize: '8px'}}>Inventory</p>
       </div>
     </div>
   );
