@@ -4,6 +4,8 @@ import EveningMenu from '../EveningMenu';
 import ExploreMenu from '../ExploreMenu';
 import TravelMenu from '../TravelMenu';
 import WalkMenu from '../WalkMenu';
+import UseMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 const townPotentials = {
   // UK - done
@@ -317,7 +319,8 @@ export default function TownMenu(props) {
   // Renders the travelling menu on accepting a lift
   const [travelling, setTravelling] = useState(false);
 
-  
+  const theme = useTheme();
+  const isMobile = UseMediaQuery(theme.breakpoints.down('sm'));
   const [message, setMessage] = useState('');
   const [amount, setAmount] = useState(0);
   const [newTown, setNewTown] = useState('');
@@ -407,7 +410,7 @@ export default function TownMenu(props) {
 
         <h2>Day {props.day}</h2>
         {!evening && <h3 id="clock" style={{marginTop: '-2px'}}>{props.time}:00</h3>}
-        {!travelling && <p style={{marginTop: '-2px', color: evening? 'white' : 'black'}}>You are in {props.currentTown}, {props.country}.</p>}   
+        {!travelling && <p style={{fontSize: isMobile ? '10px' : '14px', marginTop: '-2px', color: evening? 'white' : 'black'}}>You are in {props.currentTown}, {props.country}.</p>}   
         {!travelling && props.noFood && <p style={{marginTop: '-2px', color: 'red', width: '300px'}}>Warning: You are starving. You will lose health tonight unless you eat.</p>}
         
         {!evening && (
@@ -416,8 +419,8 @@ export default function TownMenu(props) {
           <div>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px', marginBottom: '2vh'}}>
             <button style={{
-            width: '30vw',
-            height: '6vh',
+            width: isMobile ? '30vw' : '12vw',
+            height: isMobile ? '6vh' : '5vh',
             fontSize: '16px',
             fontFamily: "'Preahvihear', sans-serif",
             display: 'flex',
@@ -431,8 +434,8 @@ export default function TownMenu(props) {
 
             }}onClick={hitchhike}>Hitchhike</button>
             <button style={{
-            width: '30vw',
-            height: '6vh',
+            width: isMobile ? '30vw' : '12vw',
+            height: isMobile ? '6vh' : '5vh',
             fontSize: '18px',
             fontWeight: 'bold',
             fontFamily: "'Preahvihear', sans-serif",
@@ -447,8 +450,8 @@ export default function TownMenu(props) {
           </div>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '25px'}}>
             <button onClick={walk} style={{
-            width: '30vw',
-            height: '6vh',
+            width: isMobile ? '30vw' : '12vw',
+            height: isMobile ? '6vh' : '5vh',
             fontSize: '18px',
             fontWeight: 'bold',
             fontFamily: "'Preahvihear', sans-serif",
@@ -461,8 +464,8 @@ export default function TownMenu(props) {
             color: 'black',
             }}>Walk</button>
             <button onClick={handleWaitClick} style={{
-            width: '30vw',
-            height: '6vh',
+            width: isMobile ? '30vw' : '12vw',
+            height: isMobile ? '6vh' : '5vh',
             fontSize: '18px',
             fontWeight: 'bold',
             fontFamily: "'Preahvihear', sans-serif",
@@ -485,7 +488,7 @@ export default function TownMenu(props) {
         {walkConfirm && (
           
           <div>
-            <WalkMenu setWalkConfirm={setWalkConfirm} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime}/>
+            <WalkMenu inventory={props.inventory} setInventory={props.setInventory}  setWalkConfirm={setWalkConfirm} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney} time={props.time} setTime={props.setTime}/>
           </div>)}
         
 
@@ -498,12 +501,12 @@ export default function TownMenu(props) {
         
         {deciding && (
           <div>
-            <p>You spend a couple of hours with your thumb in the air.</p>
-            <p style={{width: '300px'}}>{message}</p>
-            <p>Do you agree?</p>
+            <p style={{fontSize: isMobile ? '10px' : '14px'}}>You spend a couple of hours with your thumb in the air.</p>
+            <p style={{width: isMobile? '300px' : '60vw', fontSize: isMobile ? '10px' : '14px'}}>{message}</p>
+            <p style={{fontSize: isMobile ? '10px' : '14px'}}>Do you agree?</p>
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
             <button style={{
-            width: '20vw',
+            width: isMobile ? '20vw' : '12vw',
             height: '4vh',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -518,7 +521,7 @@ export default function TownMenu(props) {
             }}
             onClick={accept}>Yes</button>
             <button style={{
-            width: '20vw',
+            width: isMobile ? '20vw' : '12vw',
             height: '4vh',
             fontSize: '16px',
             fontWeight: 'bold',

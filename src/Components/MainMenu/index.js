@@ -4,6 +4,8 @@ import Intro from '../Intro';
 import MobileUI from '../MobileUI';
 import Instructions from '../Instructions';
 import Credit from '../Credit';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function MainMenu () {
     const [mainMenu, setMainMenu] = useState(true);
@@ -11,6 +13,9 @@ export default function MainMenu () {
     const [gameMenu, setGameMenu] = useState(false);
     const [instructions, setInstructions] = useState(false);
     const [credits, setCredits] = useState(false);
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     function handleStartClick() {
         setMainMenu(false);
@@ -30,9 +35,9 @@ export default function MainMenu () {
     return (
         <div>
             {mainMenu && (
-                <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
-                <h1 className="headingText">Hitcher</h1>
-                <h3 className="headingText" style={{marginTop: '1%'}}>A travelling adventure game</h3>
+                <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: isMobile ? '100%' : '40%', margin: '0 auto', overflow: 'hidden', height: '100vh'}}>
+                <h1 style={{width: isMobile ? '90vw' : '30vw'}} className="headingText">Hitcher</h1>
+                <h3 className="headingText" style={{marginTop: '1%', width: isMobile ? '90vw' : '30vw'}}>A travelling adventure game</h3>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px', padding: '50px'}}>
                     <button onClick={handleStartClick} className="menuButtons">Start/resume</button>
                     <button onClick={handleInstructionsClick} className="menuButtons">Instructions</button>

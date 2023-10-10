@@ -1,9 +1,14 @@
 import React from 'react';
 import Inventory from './Inventory.JPG'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function Stats(props) {
   const clampedHealth = Math.min(props.health, 100);
   const clampedFood = Math.min(props.food, 100);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   function openInventory() {
     if (props.setInventoryOpen) {
@@ -94,8 +99,8 @@ export default function Stats(props) {
     </div>
 
       <div>
-        <img onClick={openInventory} src={Inventory} alt="inventory" style={{width: '8vw', marginBottom: '-4%'}}></img>
-        <p style={{fontSize: '8px'}}>Inventory</p>
+        <img onClick={openInventory} src={Inventory} alt="inventory" style={{width: isMobile? '8vw' : '3vw', marginBottom: isMobile ? '-4%' : '-1vh'}}></img>
+        <p style={{fontSize: isMobile ? '8px' : '10px'}}>Inventory</p>
       </div>
     </div>
   );

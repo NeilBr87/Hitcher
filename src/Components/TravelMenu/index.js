@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './style.css';
 import CarAnimation from '../CarAnimation';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function TravelMenu(props) {
   const [journeyOutcome, setJourneyOutcome] = useState('');
@@ -22,6 +24,8 @@ export default function TravelMenu(props) {
   const [summaryPara3, setSummaryPara3] = useState("");
   const [summaryPara4, setSummaryPara4] = useState("");
   const [decisionSummary, setDecisionSummary] = useState("");
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 useEffect(() => {
     switch(props.currentTown) {
@@ -384,8 +388,8 @@ function handleProceedClickAfterAccident() {
     <div>
       {! driving && (
         <div>
-      <p>You get in the car. It is {drivingDistance} hours to {props.currentTown}.</p>
-      <button onClick={setOff} className="keyButtons" style={{fontSize: '12px'}}>
+      <p style={{fontSize: isMobile ? '10px' : '14px',}}>You get in the car. It is {drivingDistance} hours to {props.currentTown}.</p>
+      <button onClick={setOff} className="keyButtons" style={{fontSize: '12px', width: isMobile ? '20vw' : '10vw'}}>
         Set off
       </button>
       </div>
@@ -398,14 +402,14 @@ function handleProceedClickAfterAccident() {
             </div>
           )}
           {showContent ? null : (
-            <div style={{width: '300px'}}>
-              <p>{journeyOutcome}</p>
-              <p>{journeyPara2}</p>
-              <p>{journeyPara3}</p>
-              <p>{journeyPara4}</p>
+            <div style={{width: isMobile ? '300px' : '400px', margin: '0 auto'}}>
+              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyOutcome}</p>
+              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara2}</p>
+              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara3}</p>
+              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara4}</p>
               {reachedTown && (
                 <button onClick={handleProceedClick} style={{
-            width: '20vw',
+            width: isMobile ? '20vw' : '12vw',
             height: '4vh',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -456,10 +460,11 @@ function handleProceedClickAfterAccident() {
 
           {showSummary && (
             <div>
-              <p style={{width: '320px'}}>{summaryPara1}</p>
-              <p style={{width: '320px'}}>{summaryPara2}</p>
-              <p style={{width: '320px'}}>{summaryPara3}</p>
-              <p style={{width: '320px'}}>{summaryPara4}</p>
+              
+              <p style={{width: isMobile ? '320px' : '40vw', fontSize: isMobile ? '10px' : '14px'}}>{summaryPara1}</p>
+              <p style={{width: '320px', fontSize: isMobile ? '10px' : '14px'}}>{summaryPara2}</p>
+              <p style={{width: '320px', fontSize: isMobile ? '10px' : '14px'}}>{summaryPara3}</p>
+              <p style={{width: '320px', fontSize: isMobile ? '10px' : '14px'}}>{summaryPara4}</p>
               <button className="keyButtons" onClick={handleProceedClickAfterAccident}>Proceed</button>
 
             </div>)}

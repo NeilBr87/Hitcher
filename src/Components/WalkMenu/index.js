@@ -21,6 +21,13 @@ export default function WalkMenu(props) {
         if (walkEvent === "foundTwenty") {
             props.setMoney(props.money + 20);
         }
+        if (walkEvent === "givenCross") {
+            props.setInventory([...props.inventory, "Crucifix"]);
+        }
+        if (walkEvent === "robbed") {
+            props.setMoney(props.money - 50);
+        }
+
         props.setWalkConfirm(false);
     }
 
@@ -37,6 +44,20 @@ export default function WalkMenu(props) {
             setWalkPara1("While walking, you find £20 on the ground.");
             setWalkPara2("You pick it up and put it in your pocket.");
             setWalkPara3("You walk around for a few hours before heading back to your starting point.");
+            setWalkPara4("");
+        }
+        else if (randomEvent < 0.2) {
+            setWalkEvent("givenCross");
+            setWalkPara1("You walk around for a few hours, stopping to rest on a bench in a churchyard.");
+            setWalkPara2("The priest is nearby, and he stops to talk to you. You tell him about your adventures so far.");
+            setWalkPara3("He talks about how dangerous it is out there and insists on giving you something that will help keep you safe.");
+            setWalkPara4("He hands you a wooden crucifix.");
+        }
+        else if (randomEvent < 0.1) {
+            setWalkEvent("robbed");
+            setWalkPara1("You walk around for a few hours before heading back to your starting point.");
+            setWalkPara2("When you get back, you realise that you're missing some money - you've been pickpocketed!");
+            setWalkPara3("You've lost £50.");
             setWalkPara4("");
         }
         else {

@@ -6,6 +6,8 @@ import Map from '../Map';
 import './style.css';
 import GameOver from '../GameOver';
 import Inventory from '../Inventory';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function MobileUI(props) {
     const [currentTown, setCurrentTown] = useState('London');
@@ -21,6 +23,8 @@ export default function MobileUI(props) {
     const [gameOverType, setGameOverType] = useState('')
     const [inventory, setInventory] = useState(["Phone", "Wallet"])
     const [inventoryOpen, setInventoryOpen] = useState(false)
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     useEffect (() => {
         if (food <= 0) {
@@ -48,14 +52,14 @@ export default function MobileUI(props) {
     
     return (
 
-        <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: '100%', overflow: 'hidden', height: '100vh'}}>
+        <div style={{display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(30, 30, 65)', color: 'white', width: isMobile ? '100%' : '60%', margin: '0 auto', overflow: 'hidden', height: '100vh'}}>
             <h1 id="hitcher" style={{marginBottom: '-2px'}}>Hitcher</h1>
             <Stats health={health} food={food} money={money} noFood={noFood} setInventoryOpen={setInventoryOpen}/>
             {inventoryOpen && (
                 <Inventory inventory={inventory} setInventory={setInventory} setInventoryOpen={setInventoryOpen}/>
             )}
             {game && (
-            <TownMenu setGameOverType={setGameOverType} setGame={setGame} country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
+            <TownMenu inventory={inventory} setInventory={setInventory} setGameOverType={setGameOverType} setGame={setGame} country={country} setCountry={setCountry} setActualTown={setActualTown} day={day} setDay={setDay} time={time} setTime={setTime} currentTown={currentTown} setCurrentTown={setCurrentTown} health={health} setHealth={setHealth} food={food} setFood={setFood} money={money} setMoney={setMoney} noFood={noFood} setNoFood={setNoFood}/>
             )}
             {!game && (<GameOver gameOverType={gameOverType} />)}
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '3%', marginTop: '5%', marginBottom: '5%',}}>
