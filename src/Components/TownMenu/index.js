@@ -495,8 +495,8 @@ export default function TownMenu(props) {
         {waitConfirm && (
           
           <div>
-            <p>You decide to wait around until evening.</p>
-            <button onClick={wait} className="keyButtons">Proceed</button>
+            <p style={{fontSize: isMobile ? '10px' : '14px'}}>You decide to wait around until evening.</p>
+            <button style={{width: isMobile ? '20vw' : '12vw',}} onClick={wait} className="keyButtons">Proceed</button>
           </div>)}
         
         {deciding && (

@@ -194,7 +194,7 @@ export default function ExploreMenu(props) {
             </div>)}
             {earnExpanded && (
             <div>
-                <p>You decide to earn some money.</p>
+                <p style={{fontSize: isMobile ? '10px' : '14px'}}>You decide to earn some money.</p>
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start'}}>
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: isMobile ? '30vw' : '14vw',}}>
                         <button style={{width: isMobile ? '26vw' : '11vw', height: isMobile ? '8vh' : '7vh', fontSize: isMobile ? '10px' : '14px'}} onClick={askForChange} className="earnButtons" >Ask for change</button>
@@ -231,10 +231,10 @@ export default function ExploreMenu(props) {
 
             {lunchExpanded && (
                 <div>
-
+ 
                     <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>You decide to have lunch.</p>
                     <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>Note: Lunch is optional in Hitcher. You'll only get a food penalty for missing dinner. But if you're already hungry, you can spend extra and eat lunch.</p>
-                    <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>Eating lunch takes an hour. You'll take no extra time if you don't eat.</p>
+                    <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: isMobile ? '2%' : '4%', fontSize: isMobile ? '10px' : '14px'}}>Eating lunch takes an hour. You'll take no extra time if you don't eat.</p>
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: isMobile ? '10px' : '3vw'}}>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             <button onClick={noLunch} className="sleepRoughButton"style={{width: isMobile ? '26vw' : '9vw', height: isMobile ? '8vh' : '6vh', fontSize: isMobile ? '10px' : '14px'}}>No lunch</button>
@@ -259,15 +259,15 @@ export default function ExploreMenu(props) {
                 {hospitalExpanded && (
                     
                     <div>
-                        <p>You decide to visit the hospital.</p>
-                        <p>You have {props.health} health.</p>
-                        <p>{healthMessage}</p>
+                        <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>You decide to visit the hospital.</p>
+                        <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>You have {props.health} health.</p>
+                        <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>{healthMessage}</p>
                         {healthDiv && (
                             <div>
-                                <p>Do you heal?</p>
+                                <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>Do you heal?</p>
                                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: '30px'}}>
                                 <button style={{
-            width: '20vw',
+            width: isMobile ? '20vw' : '10vw',
             height: '4vh',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -281,7 +281,7 @@ export default function ExploreMenu(props) {
             color: 'black',
             }}onClick={heal}>Yes</button>
                                 <button onClick={closeHospital} style={{
-            width: '20vw',
+            width: isMobile ? '20vw' : '10vw',
             height: '4vh',
             fontSize: '16px',
             fontWeight: 'bold',
@@ -295,16 +295,16 @@ export default function ExploreMenu(props) {
             color: 'black', }}>No</button>
                             </div>
                             </div>)}
-                            <button onClick={closeHospital} style={{marginTop: '4%'}} className="keyButtons">Back</button>
+                            <button onClick={closeHospital} style={{marginTop: '4%', width: isMobile ? '20vw' : '10vw',}} className="keyButtons">Back</button>
 
                     </div>)}
-
+  
             {parcelSprintExpanded && (
                 <div>
-                    <p style={{width: '320px', margin: '0 auto'}}>You go into the local branch of ParcelSprint, the company that hires freelance couriers.</p>
-                    <p>It's an efficient way to make money as you explore.</p>
-                    <p style={{width: '320px', margin: '0 auto'}}>There's an assistant at the counter. "I'm sorry," he says. "We're currently being set up. Look out for us next update...I mean month."</p>
-                    <button onClick={closeParcelSprint} style={{marginTop: '4%'}} className="keyButtons">Back</button>
+                    <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>You go into the local branch of ParcelSprint, the company that hires freelance couriers.</p>
+                    <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>It's an efficient way to make money as you explore.</p>
+                    <p style={{width: isMobile ? '320px' : '30vw', margin: '0 auto', marginBottom: '2%', fontSize: isMobile ? '10px' : '14px'}}>There's an assistant at the counter. "I'm sorry," he says. "We're currently being set up. Look out for us next update...I mean month."</p>
+                    <button onClick={closeParcelSprint} style={{marginTop: '4%', width: isMobile ? '20vw' : '10vw',}} className="keyButtons">Back</button>
                 </div>)}
 
         </div>
