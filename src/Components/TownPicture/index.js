@@ -1,7 +1,12 @@
 import {useState, useEffect} from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function TownPicture(props) {
-const [url, setUrl] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1920px-London_Skyline_%28125508655%29.jpeg')
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const [url, setUrl] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1920px-London_Skyline_%28125508655%29.jpeg')
 
     useEffect(() => {
         if (props.actualTown === 'London') {
@@ -34,12 +39,20 @@ const [url, setUrl] = useState('https://upload.wikimedia.org/wikipedia/commons/t
         if (props.actualTown === 'Lille') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Lille2013.jpg/1920px-Lille2013.jpg")
         }
-
+        if (props.actualTown === 'Dieppe') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/2022-07-09_12-19-07_-_Dieppe_-_Vue_g%C3%A9n%C3%A9rale.jpg/1920px-2022-07-09_12-19-07_-_Dieppe_-_Vue_g%C3%A9n%C3%A9rale.jpg")
+        }
+        if (props.actualTown === 'Paris') {
+              setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1920px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg")
+        }
+        if (props.actualTown === 'Orleans') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/La_Loire_%C3%A0_Orl%C3%A9ans.jpg/1920px-La_Loire_%C3%A0_Orl%C3%A9ans.jpg")
+        }
     }, [props.actualTown]);
 
     return (
-        <div className="townPicture">
-            <img src={url} alt={props.currentTown} style={{width: '36vw', height: '15vh', borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
+        <div style={{marginTop: isMobile ? '0vh' : '-3vh'}} className="townPicture">
+            <img src={url} alt={props.currentTown} style={{width: isMobile ? '36vw' : '18vw', height: isMobile ? '15vh' : '18vh',  borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
         </div>
     )
 

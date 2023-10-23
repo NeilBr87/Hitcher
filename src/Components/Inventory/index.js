@@ -1,6 +1,11 @@
 import React from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function Inventory(props) {
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const itemsPerRow = 5;
 
     const rows = [];
@@ -9,7 +14,7 @@ export default function Inventory(props) {
     }
 
     return (
-        <div style={{ position: 'absolute', top: '40vh', left: '10vw', width: '80vw', zIndex: '1', backgroundColor: 'rgb(40, 40, 70)', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '20px', borderRadius: '5px', border: '3px groove rgb(10, 10, 40)' }}>
+        <div style={{ position: 'absolute', top: '40vh', left: isMobile ? '10vw' : '30vw', width: isMobile ? '80vw' : '40vw', zIndex: '1', backgroundColor: 'rgb(40, 40, 70)', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '20px', borderRadius: '5px', border: '3px groove rgb(10, 10, 40)' }}>
             <p style={{ fontSize: '14px', marginBottom: '5%' }}>Inventory</p>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {rows.map((row, rowIndex) => (

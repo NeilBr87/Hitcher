@@ -44,8 +44,8 @@ export default function Stats(props) {
         <p style={{marginBottom: '10%'}}>Health</p>
         <div
           style={{
-            width: '80px',
-            height: '14px',
+            width: isMobile ? '80px' : '120px',
+            height: isMobile ? '14px' : '19px',
             border: '2px inset black',
             borderRadius: '20px',
           }}
@@ -64,8 +64,8 @@ export default function Stats(props) {
         <p style={{marginBottom: '10%'}}>Food</p>
         <div
           style={{
-            width: '80px',
-            height: '14px',
+            width: isMobile ? '80px' : '120px',
+            height: isMobile ? '14px' : '19px',
             border: '2px inset black',
             borderRadius: '20px',
           }}
@@ -89,8 +89,8 @@ export default function Stats(props) {
             fontSize: '10px',
             borderRadius: '20px',
             border: '2px inset rgb(30, 100, 30)',
-            width: '80px',
-            height: '14px',
+            width: isMobile ? '80px' : '120px',
+            height: isMobile ? '14px' : '19px',
           }}
         >
           £{props.money}

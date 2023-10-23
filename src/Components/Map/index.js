@@ -3,8 +3,14 @@ import NorthernFrance from './NorthernFrance.JPG'
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './style.css';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function Map(props) {
+
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [image, setImage] = useState(UK);
       useEffect (() => {
         if (props.actualTown === 'London' || props.actualTown === 'Dover' || props.actualTown === 'Folkestone' || props.actualTown === 'Crawley' || props.actualTown === 'Maidstone' || props.actualTown === 'Winchester' || props.actualTown === 'Portsmouth' || props.actualTown === 'Newhaven') {
@@ -186,8 +192,8 @@ export default function Map(props) {
        
 
     return (
-        <div>
-            <img id="mapImage" src={image} alt="UK" style={{width: '36vw', height: '15vh', borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
+        <div style={{marginTop: isMobile ? '0vh' : '-3vh'}}>
+            <img id="mapImage" src={image} alt="UK" style={{width: isMobile ? '36vw' : '18vw', height: isMobile ? '15vh' : '18vh', borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
         </div>
     );
     }
