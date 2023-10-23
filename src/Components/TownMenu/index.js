@@ -548,8 +548,8 @@ export default function TownMenu(props) {
         <div>
           {eveningBlurb && (
             <div>
-              <p style={{color: 'white'}}>You run out of time - it's getting late.</p>
-              <p style={{color: 'white'}}>It's early evening now - too late to hitch a ride or explore town.</p>
+              <p style={{color: 'white', fontSize: isMobile ? '10px' : '14px'}}>You run out of time - it's getting late.</p>
+              <p style={{color: 'white', fontSize: isMobile ? '10px' : '14px'}}>It's early evening now - too late to hitch a ride or explore town.</p>
             </div>)}
           <EveningMenu noFood={props.noFood} setEveningBlurb={setEveningBlurb} setDeciding={setDeciding} day={props.day} setDay={props.setDay} time={props.time} setTime={props.setTime} sleepStatus={sleepStatus} setSleepStatus={setSleepStatus} eatingStatus={eatingStatus} setEatingStatus={setEatingStatus} setEvening={setEvening} health={props.health} setHealth={props.setHealth} food={props.food} setFood={props.setFood} money={props.money} setMoney={props.setMoney}/>
       </div>

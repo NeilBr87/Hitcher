@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './style.css';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function EveningMenu(props) {
 const [sleepExpanded, setSleepExpanded] = useState(false);
@@ -12,14 +14,18 @@ const [eatSummary, setEatSummary] = useState('');
 const [healthSummary, setHealthSummary] = useState('');
 const [foodSummary, setFoodSummary] = useState('');
 const [isFadingOut, setIsFadingOut] = useState(false);
+const theme = useTheme();
+const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 
     function handleSleepClick() {
         setSleepExpanded(true);
+        setEatExpanded(false);
     }
 
     function handleEatClick() {
         setEatExpanded(true);
+        setSleepExpanded(false);
     }
 
     function handleSleepRoughClick() {
@@ -144,25 +150,25 @@ const [isFadingOut, setIsFadingOut] = useState(false);
         <div>
         {!dayEnded && 
         <div id={isFadingOut ? 'fadeOut' : ''}>
-            <p style={{width: '300px', color: 'white', margin: '0 auto'}}>Make choices about food and shelter based on your money, health and hunger by clicking on the pills below.</p>
-            <p style={{color: 'white'}}>Current sleeping status: <span onClick={handleSleepClick} style={{ backgroundColor: statusColorSleep, color: 'white', padding: '4px', border: '1px inset white', borderRadius: '20px'}}>{props.sleepStatus}</span></p>
-            <p style={{color: 'white'}}>Current eating status: <span onClick={handleEatClick} style={{ backgroundColor: statusColorEat, color: 'white', padding: '3px', border: '1px inset white', borderRadius: '20px'}}>{props.eatingStatus}</span></p>
+            <p style={{width: isMobile ? '300px' : '28vw', color: 'white', margin: '0 auto', fontSize: isMobile ? '10px' : '14px'}}>Make choices about food and shelter based on your money, health and hunger by clicking on the pills below.</p>
+            <p style={{color: 'white', fontSize: isMobile ? '10px' : '14px'}}>Current sleeping status: <span onClick={handleSleepClick} style={{ backgroundColor: statusColorSleep, color: 'white', padding: '4px', border: '1px inset white', borderRadius: '20px'}}>{props.sleepStatus}</span></p>
+            <p style={{color: 'white', fontSize: isMobile ? '10px' : '14px'}}>Current eating status: <span onClick={handleEatClick} style={{ backgroundColor: statusColorEat, color: 'white', padding: '3px', border: '1px inset white', borderRadius: '20px'}}>{props.eatingStatus}</span></p>
             {sleepExpanded &&
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button className="sleepRoughButton" onClick={handleSleepRoughClick}>Sleep rough</button>
+                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="sleepRoughButton" onClick={handleSleepRoughClick}>Sleep rough</button>
                     <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: No loss</p>
                     <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: -10</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button className="greenSleepButton" onClick={handleHostelClick}>Stay in a hostel</button>
+                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleHostelClick}>Stay in a hostel</button>
                     <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: -£20</p>
                     <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: No change</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button className="greenSleepButton" onClick={handleHotelClick}>Stay in a hotel</button>
+                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleHotelClick}>Stay in a hotel</button>
                     <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: -£50</p>
                     <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: +20</p>
                 </div>
@@ -170,19 +176,19 @@ const [isFadingOut, setIsFadingOut] = useState(false);
             {eatExpanded &&
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button className="sleepRoughButton" onClick={handleGoHungryClick}>Go hungry</button>
+                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="sleepRoughButton" onClick={handleGoHungryClick}>Go hungry</button>
                     <p style={{marginTop: '5px', fontSize: '14px'}}>Money: No loss</p>
                     <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: -20</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button className="greenSleepButton" onClick={handleSupermarketClick}>Supermarket food</button>
+                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleSupermarketClick}>Supermarket food</button>
                     <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£10</p>
                     <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +10</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button className="greenSleepButton" onClick={handleRestaurantClick}>Restaurant</button>
+                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleRestaurantClick}>Restaurant</button>
                     <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£30</p>
                     <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +40</p>
                 </div>
