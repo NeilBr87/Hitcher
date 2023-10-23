@@ -156,41 +156,41 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
             {sleepExpanded &&
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="sleepRoughButton" onClick={handleSleepRoughClick}>Sleep rough</button>
-                    <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: No loss</p>
-                    <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: -10</p>
+                    <button style={{width: isMobile ? '25vw' : '10vw', fontSize: isMobile ? '10px' : '14px'}} className="sleepRoughButton" onClick={handleSleepRoughClick}>Sleep rough</button>
+                    <p style={{marginTop: '5px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Money: No loss</p>
+                    <p style={{marginTop: '-10px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Health: -10</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleHostelClick}>Stay in a hostel</button>
-                    <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: -£20</p>
-                    <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: No change</p>
+                    <button style={{width: isMobile ? '25vw' : '10vw', fontSize: isMobile ? '10px' : '14px'}} className="greenSleepButton" onClick={handleHostelClick}>Stay in a hostel</button>
+                    <p style={{marginTop: '5px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Money: -£20</p>
+                    <p style={{marginTop: '-10px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Health: No change</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleHotelClick}>Stay in a hotel</button>
-                    <p style={{marginTop: '5px', fontSize: '10px', color: 'white'}}>Money: -£50</p>
-                    <p style={{marginTop: '-10px', fontSize: '10px', color: 'white'}}>Health: +20</p>
+                    <button style={{width: isMobile ? '25vw' : '10vw', fontSize: isMobile ? '10px' : '14px'}} className="greenSleepButton" onClick={handleHotelClick}>Stay in a hotel</button>
+                    <p style={{marginTop: '5px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Money: -£50</p>
+                    <p style={{marginTop: '-10px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Health: +20</p>
                 </div>
             </div>}
             {eatExpanded &&
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="sleepRoughButton" onClick={handleGoHungryClick}>Go hungry</button>
-                    <p style={{marginTop: '5px', fontSize: '14px'}}>Money: No loss</p>
-                    <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: -20</p>
+                    <button style={{width: isMobile ? '25vw' : '10vw', fontSize: isMobile ? '10px' : '14px'}} className="sleepRoughButton" onClick={handleGoHungryClick}>Go hungry</button>
+                    <p style={{marginTop: '5px', fontSize: isMobile ? '10px' : '12px', color: 'white' }}>Money: No loss</p>
+                    <p style={{marginTop: '-10px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Food: -20</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleSupermarketClick}>Supermarket food</button>
-                    <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£10</p>
-                    <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +10</p>
+                    <button style={{width: isMobile ? '25vw' : '10vw', fontSize: isMobile ? '10px' : '14px'}} className="greenSleepButton" onClick={handleSupermarketClick}>Supermarket food</button>
+                    <p style={{marginTop: '5px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Money: -£10</p>
+                    <p style={{marginTop: '-10px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Food: +10</p>
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <button style={{width: isMobile ? '25vw' : '10vw'}} className="greenSleepButton" onClick={handleRestaurantClick}>Restaurant</button>
-                    <p style={{marginTop: '5px', fontSize: '14px'}}>Money: -£30</p>
-                    <p style={{marginTop: '-10px', fontSize: '14px'}}>Food: +40</p>
+                    <button style={{width: isMobile ? '25vw' : '10vw', fontSize: isMobile ? '10px' : '14px'}} className="greenSleepButton" onClick={handleRestaurantClick}>Restaurant</button>
+                    <p style={{marginTop: '5px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Money: -£30</p>
+                    <p style={{marginTop: '-10px', fontSize: isMobile ? '10px' : '12px', color: 'white'}}>Food: +40</p>
                 </div>
             </div>}
 
@@ -198,8 +198,8 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
             <button onClick={handleEndDayClick} style={{
                 marginTop: sleepExpanded || eatExpanded ? '1%' : '4%',
                 fontFamily: "'Preahvihear', sans-serif",
-                width: '30vw',
-                height: '10vh',
+                width: isMobile ? '30vw' : '10vw',
+                height: isMobile ? '10vh' : '7vh',
                 fontSize: '16px',
                 fontWeight: 'bold',
                 borderRadius: '10px',
@@ -211,11 +211,11 @@ const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
         {dayEnded &&
         <div style={{color: 'white'}}>
-            <p>Your day is at an end.</p>
-            <p>You {sleepSummary} and {eatSummary}.</p>
-            <p>{healthSummary}</p>
-            <p>{foodSummary}</p>
-            <button className="keyButtonsEvening" onClick={handleNextDayClick}>Next day</button>
+            <p style={{fontSize: isMobile ? '10px' : '14px',}}>Your day is at an end.</p>
+            <p style={{fontSize: isMobile ? '10px' : '14px',}}>You {sleepSummary} and {eatSummary}.</p>
+            <p style={{fontSize: isMobile ? '10px' : '14px',}}>{healthSummary}</p>
+            <p style={{fontSize: isMobile ? '10px' : '14px',}}>{foodSummary}</p>
+            <button style={{width: isMobile ? '30vw' : '14vw', fontSize: isMobile ? '10px' : '16px'}} className="keyButtonsEvening" onClick={handleNextDayClick}>Next day</button>
         </div>}
         </div>
     );
