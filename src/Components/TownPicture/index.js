@@ -9,6 +9,7 @@ export default function TownPicture(props) {
     const [url, setUrl] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1920px-London_Skyline_%28125508655%29.jpeg')
 
     useEffect(() => {
+        // UK
         if (props.actualTown === 'London') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1920px-London_Skyline_%28125508655%29.jpeg")
         }
@@ -33,20 +34,43 @@ export default function TownPicture(props) {
         if (props.actualTown === 'Folkestone') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/1/14/Harbour_full_view_Folkestone.jpg")
         }
+
+        // France
         if (props.actualTown === 'Calais') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Calais%2C_rue_Royale_%28France%2C_August_2011%29.jpg/1920px-Calais%2C_rue_Royale_%28France%2C_August_2011%29.jpg")
         }
         if (props.actualTown === 'Lille') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Lille2013.jpg/1920px-Lille2013.jpg")
         }
+        if (props.actualTown === 'Amiens') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/0_Amiens_-_Place_du_Don_-_Cath%C3%A9drale_%281%29.JPG/1920px-0_Amiens_-_Place_du_Don_-_Cath%C3%A9drale_%281%29.JPG")
+        }
         if (props.actualTown === 'Dieppe') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/2022-07-09_12-19-07_-_Dieppe_-_Vue_g%C3%A9n%C3%A9rale.jpg/1920px-2022-07-09_12-19-07_-_Dieppe_-_Vue_g%C3%A9n%C3%A9rale.jpg")
+        }
+        if (props.actualTown === 'Caen') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Rue_Froide_de_Caen_2017.jpg/1280px-Rue_Froide_de_Caen_2017.jpg  ")
         }
         if (props.actualTown === 'Paris') {
               setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1920px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg")
         }
+        if (props.actualTown === 'Tours') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Hotel_de_Ville_Tours.jpg/1280px-Hotel_de_Ville_Tours.jpg")
+        }
         if (props.actualTown === 'Orleans') {
             setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/La_Loire_%C3%A0_Orl%C3%A9ans.jpg/1920px-La_Loire_%C3%A0_Orl%C3%A9ans.jpg")
+        }
+        if (props.actualTown === 'Dijon') {
+           setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Toits-dijonnais.jpg/1920px-Toits-dijonnais.jpg") 
+        }
+        if (props.actualTown === 'Reims') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sub%C3%A9_Fountain%2C_Reims%2C_France.jpg/1280px-Sub%C3%A9_Fountain%2C_Reims%2C_France.jpg")
+        }
+        if (props.actualTown === 'Lyon') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/BassinNautique_Confluence_Lyon.jpg/1280px-BassinNautique_Confluence_Lyon.jpg")
+        }
+        if (props.actualTown === 'Bordeaux') {
+            setUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bordeaux_%282418988310%29.jpg/1280px-Bordeaux_%282418988310%29.jpg")
         }
     }, [props.actualTown]);
 

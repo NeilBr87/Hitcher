@@ -402,7 +402,7 @@ export default function TownMenu(props) {
 
     <div>
 
-    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '90%', margin: '0 auto', height: isMobile ? '60vh' : '55vh',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(90, 90, 90)' : 'white', color: 'black'}}>
+    <div id="containerFade" style={{display: 'flex', flexDirection: 'row', width: '90%', margin: '0 auto', height: isMobile ? '57vh' : '55vh',justifyContent: 'center', alignItems: 'flex-start', backgroundColor: evening? 'rgb(90, 90, 90)' : 'white', color: 'black'}}>
       
 
       

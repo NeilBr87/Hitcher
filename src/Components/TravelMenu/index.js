@@ -403,10 +403,10 @@ function handleProceedClickAfterAccident() {
           )}
           {showContent ? null : (
             <div style={{width: isMobile ? '300px' : '400px', margin: '0 auto'}}>
-              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyOutcome}</p>
-              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara2}</p>
-              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara3}</p>
-              <p style={{width: isMobile? '320px' : '420px', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara4}</p>
+              <p style={{width: isMobile? '70vw' : '420px', marginBottom: isMobile ? '2vh' : '2vh', margin: '0 auto', fontSize: isMobile ? '10px' : '14px'}}>{journeyOutcome}</p>
+              <p style={{width: isMobile? '70vw' : '420px', marginBottom: isMobile ? '2vh' : '2vh',  margin: '0 auto', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara2}</p>
+              <p style={{width: isMobile? '70vw' : '420px', marginBottom: isMobile ? '2vh' : '2vh', margin: '0 auto', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara3}</p>
+              <p style={{width: isMobile? '70vw' : '420px', marginBottom: isMobile ? '2vh' : '2vh',  margin: '0 auto', fontSize: isMobile ? '10px' : '14px'}}>{journeyPara4}</p>
               {reachedTown && (
                 <button onClick={handleProceedClick} style={{
             width: isMobile ? '20vw' : '12vw',

@@ -48,7 +48,43 @@ export default function MobileUI(props) {
         if (money <= 0) {
             setMoney(0);
         }
-    ;}, [food, health, money]);
+        if (currentTown === 'Algiers') {
+            setGameOverType('Algiers');
+            setGame(false);
+        }
+        if (currentTown === 'Ghazaouet') {
+            setGameOverType('Ghazaouet');
+            setGame(false);
+        }
+        if (currentTown === 'Tangier') {
+            setGameOverType('Tangier');
+            setGame(false);
+        }
+        if (currentTown === 'Tunis') {
+            setGameOverType('Tunis');
+            setGame(false);
+        }
+        if (currentTown === 'Petersburg') {
+            setGameOverType('Petersburg');
+            setGame(false);
+        }
+        if (currentTown === 'Smolensk') {
+            setGameOverType('Smolensk');
+            setGame(false);
+        }
+        if (currentTown === 'Rostov') {
+            setGameOverType('Rostov');
+            setGame(false);
+        }
+        if (currentTown === 'Varna') {
+            setGameOverType('Varna');
+            setGame(false);
+        }
+        if (currentTown === 'Istanbul') {
+            setGameOverType('Istanbul');
+            setGame(false);
+        }
+    ;}, [food, health, money, currentTown]);
     
     return (
 

@@ -193,7 +193,7 @@ export default function Map(props) {
 
     return (
         <div style={{marginTop: isMobile ? '0vh' : '-3vh'}}>
-            <img id="mapImage" src={image} alt="UK" style={{width: isMobile ? '36vw' : '18vw', height: isMobile ? '15vh' : '18vh', borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
+            <img id="mapImage" src={image} alt="UK" style={{width: isMobile ? '36vw' : '18vw', height: isMobile ? '15vh' : '18vh',   borderRadius: '10px', border: '2px inset rgb(10, 20, 80)'}}/>
         </div>
     );
     }
